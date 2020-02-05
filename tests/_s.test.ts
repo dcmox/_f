@@ -207,7 +207,7 @@ describe('_s test suite', () => {
         const tests: any = [
             { s: '1231', times: 3, expected: '0001'},
             { s: '54321', times: 4, expected: '00005' },
-            { s: '1world', times: 5, expected: '000000'},
+            { s: '1world', times: 5, expected: '000001'},
         ]
         tests.forEach((test: any) => {
             assert.equal(_s.rightShift(test.s, test.times), test.expected)
