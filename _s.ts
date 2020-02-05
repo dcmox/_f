@@ -50,6 +50,8 @@ const fromBinary = (s: string) =>
     splitByLength(s, 8).map((c: string) => String.fromCharCode(parseInt(c, 2))).join('')
 const toBase64 = (s: string) => window ? btoa(s) : new Buffer(s).toString('base64')
 const fromBase64 = (s: string) => window ? atob(s) : new Buffer(s).toString('ascii')
+const rightRotate = (s: string, bits: number) => s.slice(s.length - bits) + s.slice(0, s.length - bits)
+const rightShift = (s: string, bits: number, char: string = '0') => s.slice(0, s.length - bits).padStart(s.length, char)
 
 export class UnderscoreS {
     public static pascalCase = (s: string): string => pascalCase(s)
@@ -69,6 +71,8 @@ export class UnderscoreS {
     public static fromBinary = (s: string) => fromBinary(s)
     public static toBase64 = (s: string) => toBase64(s)
     public static fromBase64 = (s: string) => fromBase64(s)
+    public static rightRotate = (s: string, bits: number) => rightRotate(s, bits)
+    public static rightShift = (s: string, bits: number, char: string = '0') => rightShift(s, bits, char)
 }
 
 export const _s = UnderscoreS

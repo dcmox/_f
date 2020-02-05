@@ -60,6 +60,11 @@ var fromBinary = function (s) {
 };
 var toBase64 = function (s) { return window ? btoa(s) : new Buffer(s).toString('base64'); };
 var fromBase64 = function (s) { return window ? atob(s) : new Buffer(s).toString('ascii'); };
+var rightRotate = function (s, bits) { return s.slice(s.length - bits) + s.slice(0, s.length - bits); };
+var rightShift = function (s, bits, char) {
+    if (char === void 0) { char = '0'; }
+    return s.slice(0, s.length - bits).padStart(s.length, char);
+};
 var UnderscoreS = /** @class */ (function () {
     function UnderscoreS() {
     }
@@ -80,6 +85,11 @@ var UnderscoreS = /** @class */ (function () {
     UnderscoreS.fromBinary = function (s) { return fromBinary(s); };
     UnderscoreS.toBase64 = function (s) { return toBase64(s); };
     UnderscoreS.fromBase64 = function (s) { return fromBase64(s); };
+    UnderscoreS.rightRotate = function (s, bits) { return rightRotate(s, bits); };
+    UnderscoreS.rightShift = function (s, bits, char) {
+        if (char === void 0) { char = '0'; }
+        return rightShift(s, bits, char);
+    };
     return UnderscoreS;
 }());
 exports.UnderscoreS = UnderscoreS;

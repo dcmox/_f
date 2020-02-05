@@ -19,6 +19,8 @@ String library for TypeScript / NodeJS
 * fromBinary = (s: string) => fromBinary(s)
 * toBase64 = (s: string) => toBase64(s)
 * fromBase64 = (s: string) => fromBase64(s)
+* rightRotate = (s: string, bits: number) => rightRotate(s, bits)
+* rightShift = (s: string, bits: number, char: string = '0') => rightShift(s, bits, char)
 
 ## Usage
 ```typescript

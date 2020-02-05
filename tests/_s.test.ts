@@ -193,4 +193,24 @@ describe('_s test suite', () => {
             assert.equal(_s.fromBase64(test.s), test.expected)
         })
     })
+    it('should right rotate a string', () => {
+        const tests: any = [
+            { s: 'test', times: 3, expected: 'estt'},
+            { s: 'hello', times: 3, expected: 'llohe' },
+            { s: 'world', times: 7, expected: 'ldwor'},
+        ]
+        tests.forEach((test: any) => {
+            assert.equal(_s.rightRotate(test.s, test.times), test.expected)
+        })
+    })
+    it('should right shift a string', () => {
+        const tests: any = [
+            { s: '1231', times: 3, expected: '0001'},
+            { s: '54321', times: 4, expected: '00001' },
+            { s: '1world', times: 5, expected: '00000'},
+        ]
+        tests.forEach((test: any) => {
+            assert.equal(_s.rightRotate(test.s, test.times), test.expected)
+        })
+    })
 })
