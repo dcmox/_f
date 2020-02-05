@@ -22,6 +22,6 @@ String library for TypeScript / NodeJS
 
 ## Usage
 ```typescript
-const _s = require('underscore-string')._s
+const _s = require('underscore-functions')._s
 const str = _s.upperCaseWords('hello world') // Hello World
 ```
