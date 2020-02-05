@@ -50,10 +50,24 @@ const fromBinary = (s: string) =>
     splitByLength(s, 8).map((c: string) => String.fromCharCode(parseInt(c, 2))).join('')
 const toBase64 = (s: string) => window ? btoa(s) : new Buffer(s).toString('base64')
 const fromBase64 = (s: string) => window ? atob(s) : new Buffer(s).toString('ascii')
-const rightRotate = (s: string, bits: number) => s.slice(s.length - bits) + s.slice(0, s.length - bits)
-const rightShift = (s: string, bits: number, char: string = '0') => s.slice(0, s.length - bits).padStart(s.length, char)
+const rightRotate = (s: string, bits: number) =>
+    bits > s.length
+    ? s.slice(s.length - (bits % s.length)) + s.slice(0, s.length - (bits % s.length))
+    : s.slice(s.length - bits) + s.slice(0, s.length - bits)
+const leftRotate = (s: string, bits: number) =>
+    bits > s.length
+    ? s.slice(bits % s.length) + s.slice(0, bits % s.length)
+    : s.slice(bits) + s.slice(0, bits)
+const rightShift = (s: string, bits: number, char: string = '0') =>
+    bits > s.length
+    ? ''.padStart(s.length, char)
+    : s.slice(0, s.length - bits).padStart(s.length, char)
+const excerpt = (s: string, len: number = 255): string =>
+    (s.length <= len ? s : s.slice(0, s.substring(0, len).lastIndexOf(' ')) + '...')
+const reverse = (s: string): string => s.split('').reverse().join('')
+const reverseWords = (s: string): string => s.split(' ').reverse().join(' ')
 
-export class UnderscoreS {
+export class UnderscoreF {
     public static pascalCase = (s: string): string => pascalCase(s)
     public static camelCase = (s: string): string => camelCase(s)
     public static nl2br = (s: string) => nl2br(s)
@@ -72,9 +86,13 @@ export class UnderscoreS {
     public static toBase64 = (s: string) => toBase64(s)
     public static fromBase64 = (s: string) => fromBase64(s)
     public static rightRotate = (s: string, bits: number) => rightRotate(s, bits)
+    public static leftRotate = (s: string, bits: number) => leftRotate(s, bits)
     public static rightShift = (s: string, bits: number, char: string = '0') => rightShift(s, bits, char)
+    public static excerpt = (s: string, len: number) => excerpt(s, len)
+    public static reverse = (s: string) => reverse(s)
+    public static reverseWords = (s: string) => reverseWords(s)
 }
 
-export const _s = UnderscoreS
+export const _f = UnderscoreF
 
-export default _s
+export default _f

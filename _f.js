@@ -60,38 +60,59 @@ var fromBinary = function (s) {
 };
 var toBase64 = function (s) { return window ? btoa(s) : new Buffer(s).toString('base64'); };
 var fromBase64 = function (s) { return window ? atob(s) : new Buffer(s).toString('ascii'); };
-var rightRotate = function (s, bits) { return s.slice(s.length - bits) + s.slice(0, s.length - bits); };
+var rightRotate = function (s, bits) {
+    return bits > s.length
+        ? s.slice(s.length - (bits % s.length)) + s.slice(0, s.length - (bits % s.length))
+        : s.slice(s.length - bits) + s.slice(0, s.length - bits);
+};
+var leftRotate = function (s, bits) {
+    return bits > s.length
+        ? s.slice(bits % s.length) + s.slice(0, bits % s.length)
+        : s.slice(bits) + s.slice(0, bits);
+};
 var rightShift = function (s, bits, char) {
     if (char === void 0) { char = '0'; }
-    return s.slice(0, s.length - bits).padStart(s.length, char);
+    return bits > s.length
+        ? ''.padStart(s.length, char)
+        : s.slice(0, s.length - bits).padStart(s.length, char);
 };
-var UnderscoreS = /** @class */ (function () {
-    function UnderscoreS() {
+var excerpt = function (s, len) {
+    if (len === void 0) { len = 255; }
+    return (s.length <= len ? s : s.slice(0, s.substring(0, len).lastIndexOf(' ')) + '...');
+};
+var reverse = function (s) { return s.split('').reverse().join(''); };
+var reverseWords = function (s) { return s.split(' ').reverse().join(' '); };
+var UnderscoreF = /** @class */ (function () {
+    function UnderscoreF() {
     }
-    UnderscoreS.pascalCase = function (s) { return pascalCase(s); };
-    UnderscoreS.camelCase = function (s) { return camelCase(s); };
-    UnderscoreS.nl2br = function (s) { return nl2br(s); };
-    UnderscoreS.br2nl = function (s) { return br2nl(s); };
-    UnderscoreS.splitByLength = function (s, len) { return splitByLength(s, len); };
-    UnderscoreS.upperCaseWords = function (s) { return upperCaseWords(s); };
-    UnderscoreS.upperCaseFirst = function (s) { return upperCaseFirst(s); };
-    UnderscoreS.upperCaseFirstInSentence = function (s) { return upperCaseFirstInSentence(s); };
-    UnderscoreS.decodeHTML = function (html) { return decodeHTML(html); };
-    UnderscoreS.toAlpha = function (s, charSet) { return toAlpha(s, charSet); };
-    UnderscoreS.toNumeric = function (s, charSet) { return toNumeric(s, charSet); };
-    UnderscoreS.toBinary = function (s) { return toBinary(s); };
-    UnderscoreS.toHex = function (s) { return toHex(s); };
-    UnderscoreS.fromHex = function (s) { return fromHex(s); };
-    UnderscoreS.fromBinary = function (s) { return fromBinary(s); };
-    UnderscoreS.toBase64 = function (s) { return toBase64(s); };
-    UnderscoreS.fromBase64 = function (s) { return fromBase64(s); };
-    UnderscoreS.rightRotate = function (s, bits) { return rightRotate(s, bits); };
-    UnderscoreS.rightShift = function (s, bits, char) {
+    UnderscoreF.pascalCase = function (s) { return pascalCase(s); };
+    UnderscoreF.camelCase = function (s) { return camelCase(s); };
+    UnderscoreF.nl2br = function (s) { return nl2br(s); };
+    UnderscoreF.br2nl = function (s) { return br2nl(s); };
+    UnderscoreF.splitByLength = function (s, len) { return splitByLength(s, len); };
+    UnderscoreF.upperCaseWords = function (s) { return upperCaseWords(s); };
+    UnderscoreF.upperCaseFirst = function (s) { return upperCaseFirst(s); };
+    UnderscoreF.upperCaseFirstInSentence = function (s) { return upperCaseFirstInSentence(s); };
+    UnderscoreF.decodeHTML = function (html) { return decodeHTML(html); };
+    UnderscoreF.toAlpha = function (s, charSet) { return toAlpha(s, charSet); };
+    UnderscoreF.toNumeric = function (s, charSet) { return toNumeric(s, charSet); };
+    UnderscoreF.toBinary = function (s) { return toBinary(s); };
+    UnderscoreF.toHex = function (s) { return toHex(s); };
+    UnderscoreF.fromHex = function (s) { return fromHex(s); };
+    UnderscoreF.fromBinary = function (s) { return fromBinary(s); };
+    UnderscoreF.toBase64 = function (s) { return toBase64(s); };
+    UnderscoreF.fromBase64 = function (s) { return fromBase64(s); };
+    UnderscoreF.rightRotate = function (s, bits) { return rightRotate(s, bits); };
+    UnderscoreF.leftRotate = function (s, bits) { return leftRotate(s, bits); };
+    UnderscoreF.rightShift = function (s, bits, char) {
         if (char === void 0) { char = '0'; }
         return rightShift(s, bits, char);
     };
-    return UnderscoreS;
+    UnderscoreF.excerpt = function (s, len) { return excerpt(s, len); };
+    UnderscoreF.reverse = function (s) { return reverse(s); };
+    UnderscoreF.reverseWords = function (s) { return reverseWords(s); };
+    return UnderscoreF;
 }());
-exports.UnderscoreS = UnderscoreS;
-exports._s = UnderscoreS;
-exports["default"] = exports._s;
+exports.UnderscoreF = UnderscoreF;
+exports._f = UnderscoreF;
+exports["default"] = exports._f;

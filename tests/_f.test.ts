@@ -213,4 +213,42 @@ describe('_s test suite', () => {
             assert.equal(_s.rightShift(test.s, test.times), test.expected)
         })
     })
+    it('should left rotate a string', () => {
+        const tests: any = [
+            { s: 'test', times: 3, expected: 'ttes'},
+            { s: 'hello', times: 4, expected: 'ohell' },
+            { s: 'world', times: 5, expected: 'world'},
+        ]
+        tests.forEach((test: any) => {
+            assert.equal(_s.leftRotate(test.s, test.times), test.expected)
+        })
+    })
+    it('should create an excerpt', () => {
+        const tests: any = [
+            { s: 'hello world', expected: 'hello...'},
+            { s: 'hi there how', expected: 'hi there...' },
+            { s: 'hi hi hi how', expected: 'hi hi hi...'},
+        ]
+        tests.forEach((test: any) => {
+            assert.equal(_s.excerpt(test.s, 10), test.expected)
+        })
+    })
+    it('should reverse a string', () => {
+        const tests: any = [
+            { s: 'hello world', expected: 'dlrow olleh'},
+            { s: 'hi there', expected: 'ereht ih' },
+        ]
+        tests.forEach((test: any) => {
+            assert.equal(_s.reverse(test.s), test.expected)
+        })
+    })
+    it('should reverse words in a string', () => {
+        const tests: any = [
+            { s: 'hello world', expected: 'world hello'},
+            { s: 'hi there', expected: 'there hi' },
+        ]
+        tests.forEach((test: any) => {
+            assert.equal(_s.reverseWords(test.s), test.expected)
+        })
+    })
 })

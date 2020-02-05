@@ -3,7 +3,7 @@
   "version": "0.5.1",
   "private": false,
   "description": "String functions",
-  "main": "_s.js",
+  "main": "_f.js",
   "engines": {
     "node": ">=4.0.0"
   },
@@ -20,9 +20,9 @@
   "scripts": {
     "test": "jest tests/*",
     "build": "npm run build:main",
-    "build:main": "tsc _s.ts",
-    "watch": "tsc -w _s.ts",
-    "testb": "node _s.js"
+    "build:main": "tsc _f.ts",
+    "watch": "tsc -w _f.ts",
+    "testb": "node _f.js"
   },
   "repository": {
     "type": "git",
