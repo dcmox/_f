@@ -1,6 +1,6 @@
 {
   "name": "underscore-functions",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "private": false,
   "description": "String functions",
   "main": "_f.js",
@@ -26,16 +26,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dcmox/_s.git"
+    "url": "git+https://github.com/dcmox/_f.git"
   },
   "keywords": [
-    "underscore s",
+    "underscore f",
+    "underscore functions",
+    "string manipulation",
+    "array functions",
     "moxy"
   ],
   "author": "Daniel Moxon (dancmox@comcast.net)",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/dcmox/_s/issues"
+    "url": "https://github.com/dcmox/_f/issues"
   },
-  "homepage": "https://github.com/dcmox/_s#readme"
+  "homepage": "https://github.com/dcmox/_f#readme"
 }
