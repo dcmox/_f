@@ -1,4 +1,4 @@
-/* Copyright 2020 Daniel Moxon @ https://github.com/dcmox/_s */
+/* Copyright 2020 Daniel Moxon @ https://github.com/dcmox/_f */
 interface ICharMap { [key: string]: string }
 // tslint:disable: object-literal-sort-keys
 const HTML_CHAR_MAP: ICharMap = {

@@ -1,4 +1,3 @@
-/* Copyright 2020 Daniel Moxon @ https://github.com/dcmox/_s */
 "use strict";
 exports.__esModule = true;
 // tslint:disable: object-literal-sort-keys
