@@ -260,6 +260,16 @@ describe('_f test suite', () => {
             assert.deepEqual(_f.toPath(test.s), test.expected)
         })
     })
+    it('should convert a key to a human readable string', () => {
+        const tests: any = [
+            { s: 'first_name', expected: 'First Name' },
+            { s: 'last-name', expected: 'Last Name' },
+            { s: 'user-last-name', expected: 'Last Name' },
+        ]
+        tests.forEach((test: any) => {
+            assert.deepEqual(_f.keyToField(test.s, 'user'), test.expected)
+        })
+    })
     it('should compact an array', () => {
         assert.deepEqual(_f.compact([1, 2, null, false, 3, 4, undefined, 5]), [1, 2, 3, 4, 5])
     })

@@ -68,6 +68,19 @@ const excerpt = (s: string, len: number = 255): string =>
 const reverse = (s: string): string => s.split('').reverse().join('')
 const reverseWords = (s: string): string => s.split(' ').reverse().join(' ')
 const toPath = (s: string): string[] => s.replace(/\[|\]/g, '.').split('.').filter((n: string) => n)
+const keyToField = (s: string, strip?: string): string =>
+    strip
+    ? s.replace(new RegExp(`${strip}`, 'g'), '')
+        .replace(/\-|\_/g, ' ')
+        .split(' ')
+        .map((w: string) => w.charAt(0).toUpperCase() + w.slice(1))
+        .join(' ')
+        .trim()
+    : s.replace(/\-|\_/g, ' ')
+        .split(' ')
+        .map((w: string) => w.charAt(0).toUpperCase() + w.slice(1))
+        .join(' ')
+        .trim()
 
 const compact = (a: any[]): any[] => a.filter((itm: any) => itm)
 const first = (a: any[], byRef: boolean = false): any => {
@@ -196,6 +209,7 @@ export class UnderscoreF {
     public static reverse = (s: string) => reverse(s)
     public static reverseWords = (s: string) => reverseWords(s)
     public static toPath = (s: string) => toPath(s)
+    public static keyToField = (s: string, strip?: string) => keyToField(s, strip)
     public static compact = (a: any[]) => compact(a)
     public static first = (a: any[], byRef: boolean = false) => first(a, byRef)
     public static last = (a: any[], byRef: boolean = false) => last(a, byRef)

@@ -1,5 +1,5 @@
 # _f
-String and Array manipulation library for TypeScript / NodeJS. Array functions are immutable by default, providing you with copies rather than references.
+Moxy String and Array manipulation library for TypeScript / NodeJS. Array functions are immutable by default, providing you with copies rather than references.
 
 ## String Functions
 * pascalCase = (s: string): string => Converts to Pascal Case
@@ -25,6 +25,7 @@ String and Array manipulation library for TypeScript / NodeJS. Array functions a
 * reverse = (s: string) => Reverses a string
 * reverseWords = (s: string) => Reverses words in a string
 * shuffle = (a: string | any[]) => Shuffle a string
+* keyToField = (s: string, strip?: string) => Converts a key to a human readable field
 
 ## Array Functions
 * compact = (a: any[]) => Removes values that are falsey
