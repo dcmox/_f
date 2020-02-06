@@ -1,5 +1,5 @@
 # _f
-String and Array manipulation library for TypeScript / NodeJS. Array Functions are immutable by default, providing you with copies rather than references.
+String and Array manipulation library for TypeScript / NodeJS. Array functions are immutable by default, providing you with copies rather than references.
 
 ## String Functions
 * pascalCase = (s: string): string => Converts to Pascal Case
@@ -42,3 +42,6 @@ String and Array manipulation library for TypeScript / NodeJS. Array Functions a
 const _f = require('underscore-functions')._f
 const str = _f.upperCaseWords('hello world') // Hello World
 ```
+
+## Donations appreciated
+If you find any of my GitHub projects useful, feel free to [donate here](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EUDNKJR7GS3UQ&source=url)!
