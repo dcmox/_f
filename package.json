@@ -1,6 +1,6 @@
 {
   "name": "underscore-functions",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "private": false,
   "description": "String functions",
   "main": "_f.js",

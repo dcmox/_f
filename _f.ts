@@ -66,6 +66,109 @@ const excerpt = (s: string, len: number = 255): string =>
     (s.length <= len ? s : s.slice(0, s.substring(0, len).lastIndexOf(' ')) + '...')
 const reverse = (s: string): string => s.split('').reverse().join('')
 const reverseWords = (s: string): string => s.split(' ').reverse().join(' ')
+const toPath = (s: string): string[] => s.replace(/\[|\]/g, '.').split('.').filter((n: string) => n)
+
+const compact = (a: any[]): any[] => a.filter((itm: any) => itm)
+const first = (a: any[], byRef: boolean = false): any => {
+    if (byRef) {
+        for (const i in a) { if (a[i]) { return a[i] } }
+    } else {
+        return a.slice().shift()
+    }
+}
+const last = (a: any[], byRef: boolean = false): any => {
+    if (byRef) {
+        const temp: any = a.filter((item: any) => item !== undefined)
+        return temp[temp.length - 1]
+    } else {
+        return a.slice().pop()
+    }
+}
+
+const findFirst = (a: any[], cond: (item: any) => boolean, byRef: boolean = false): any =>
+    byRef
+    ? a.find((item: any) => cond(item))
+    : a.slice().find((item: any) => cond(item))
+
+const findLast = (a: any[], cond: (item: any) => boolean, byRef: boolean = false): any => {
+    if (byRef) {
+        const temp: any = a.filter((item: any) => cond(item))
+        return temp[temp.length - 1]
+    } else {
+        return a.slice().reverse().find((item: any) => cond(item))
+    }
+}
+
+const unique = (a: any[], byRef: boolean = false) =>
+    byRef
+    ? a.filter((item: any, index: number) => a.indexOf(item) === index)
+    : a.slice().filter((item: any, index: number) => a.indexOf(item) === index)
+
+const CONSTRUCTOR_TAGS = [
+    '[object ArrayBuffer]',
+    '[object Boolean]',
+    '[object DataView]',
+    '[object Date]',
+    '[object Array]',
+    '[object Float32Array]',
+    '[object Float64Array]',
+    '[object Set]',
+    '[object Symbol]',
+    '[object Map]',
+    '[object Number]',
+    '[object Int8Array]',
+    '[object Int16Array]',
+    '[object Int32Array]',
+    '[object Uint8Array]',
+    '[object Uint8ClampedArray]',
+    '[object Uint16Array]',
+    '[object Uint32Array]',
+    '[object WeakMap]',
+]
+
+const deepClone = (src: any): any => {
+    if (Array.isArray(src)) {
+        if (src.some((e: any) => Array.isArray(e))) {
+            return src.map((e) => Array.isArray(src) ? deepClone(e) : e)
+        } else {
+            return src.slice(0)
+        }
+    }
+
+    if (typeof src !== 'object') { return src }
+
+    if (typeof src === 'object' && CONSTRUCTOR_TAGS.includes(toString.call(src))) {
+        return new src.constructor(src)
+    }
+
+    return Object.keys(src).reduce((result: any, key: any): any => {
+        if (Array.isArray(src[key])) {
+            result[key] = deepClone(src[key])
+        } else if (typeof src[key] === 'object') {
+            const prototype: any = Object.getPrototypeOf(src[key])
+            result[key] = deepClone(src[key])
+            Object.setPrototypeOf(result[key], prototype)
+            Object.getOwnPropertySymbols(src[key]).forEach((symbol: symbol) => {
+                result[key][symbol] = src[key][symbol]
+            })
+        } else {
+            result[key] = src[key]
+        }
+        return result
+    }, Object.getOwnPropertySymbols(src).reduce((result: any, symbol: symbol) => {
+        result[symbol] = src[symbol]
+        return result
+    }, {}))
+}
+
+const flat = (a: any) => a.reduce((ret: any[], v: any) => ret.concat(Array.isArray(v) ? flat(v) : v), [])
+
+const shuffle = (a: string | any[], byRef: boolean = false) =>
+    typeof a === 'string'
+    ? a.split('').sort((a: any, b: any) => Math.random() > Math.random() ? 1 : -1).join('')
+    : byRef
+    ? a.sort((a: any, b: any) => Math.random() > Math.random() ? 1 : -1)
+    : a.slice().sort((a: any, b: any) => Math.random() > Math.random() ? 1 : -1)
 
 export class UnderscoreF {
     public static pascalCase = (s: string): string => pascalCase(s)
@@ -91,6 +194,16 @@ export class UnderscoreF {
     public static excerpt = (s: string, len: number) => excerpt(s, len)
     public static reverse = (s: string) => reverse(s)
     public static reverseWords = (s: string) => reverseWords(s)
+    public static toPath = (s: string) => toPath(s)
+    public static compact = (a: any[]) => compact(a)
+    public static first = (a: any[], byRef: boolean = false) => first(a, byRef)
+    public static last = (a: any[], byRef: boolean = false) => last(a, byRef)
+    public static findFirst = (a: any[], cond: () => boolean, byRef: boolean = false) => findFirst(a, cond, byRef)
+    public static findLast = (a: any[], cond: () => boolean, byRef: boolean = false) => findLast(a, cond, byRef)
+    public static unique = (a: any[]) => unique(a)
+    public static deepClone = (a: any) => deepClone(a)
+    public static flat = (a: any) => flat(a)
+    public static shuffle = (a: string | any[]) => shuffle(a)
 }
 
 export const _f = UnderscoreF

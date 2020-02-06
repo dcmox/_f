@@ -82,6 +82,119 @@ var excerpt = function (s, len) {
 };
 var reverse = function (s) { return s.split('').reverse().join(''); };
 var reverseWords = function (s) { return s.split(' ').reverse().join(' '); };
+var toPath = function (s) { return s.replace(/\[|\]/g, '.').split('.').filter(function (n) { return n; }); };
+var compact = function (a) { return a.filter(function (itm) { return itm; }); };
+var first = function (a, byRef) {
+    if (byRef === void 0) { byRef = false; }
+    if (byRef) {
+        for (var i in a) {
+            if (a[i]) {
+                return a[i];
+            }
+        }
+    }
+    else {
+        return a.slice().shift();
+    }
+};
+var last = function (a, byRef) {
+    if (byRef === void 0) { byRef = false; }
+    if (byRef) {
+        var temp = a.filter(function (item) { return item !== undefined; });
+        return temp[temp.length - 1];
+    }
+    else {
+        return a.slice().pop();
+    }
+};
+var findFirst = function (a, cond, byRef) {
+    if (byRef === void 0) { byRef = false; }
+    return byRef
+        ? a.find(function (item) { return cond(item); })
+        : a.slice().find(function (item) { return cond(item); });
+};
+var findLast = function (a, cond, byRef) {
+    if (byRef === void 0) { byRef = false; }
+    if (byRef) {
+        var temp = a.filter(function (item) { return cond(item); });
+        return temp[temp.length - 1];
+    }
+    else {
+        return a.slice().reverse().find(function (item) { return cond(item); });
+    }
+};
+var unique = function (a, byRef) {
+    if (byRef === void 0) { byRef = false; }
+    return byRef
+        ? a.filter(function (item, index) { return a.indexOf(item) === index; })
+        : a.slice().filter(function (item, index) { return a.indexOf(item) === index; });
+};
+var CONSTRUCTOR_TAGS = [
+    '[object ArrayBuffer]',
+    '[object Boolean]',
+    '[object DataView]',
+    '[object Date]',
+    '[object Array]',
+    '[object Float32Array]',
+    '[object Float64Array]',
+    '[object Set]',
+    '[object Symbol]',
+    '[object Map]',
+    '[object Number]',
+    '[object Int8Array]',
+    '[object Int16Array]',
+    '[object Int32Array]',
+    '[object Uint8Array]',
+    '[object Uint8ClampedArray]',
+    '[object Uint16Array]',
+    '[object Uint32Array]',
+    '[object WeakMap]',
+];
+var deepClone = function (src) {
+    if (Array.isArray(src)) {
+        if (src.some(function (e) { return Array.isArray(e); })) {
+            return src.map(function (e) { return Array.isArray(src) ? deepClone(e) : e; });
+        }
+        else {
+            return src.slice(0);
+        }
+    }
+    if (typeof src !== 'object') {
+        return src;
+    }
+    if (typeof src === 'object' && CONSTRUCTOR_TAGS.includes(toString.call(src))) {
+        return new src.constructor(src);
+    }
+    return Object.keys(src).reduce(function (result, key) {
+        if (Array.isArray(src[key])) {
+            result[key] = deepClone(src[key]);
+        }
+        else if (typeof src[key] === 'object') {
+            var prototype = Object.getPrototypeOf(src[key]);
+            result[key] = deepClone(src[key]);
+            Object.setPrototypeOf(result[key], prototype);
+            Object.getOwnPropertySymbols(src[key]).forEach(function (symbol) {
+                result[key][symbol] = src[key][symbol];
+            });
+        }
+        else {
+            result[key] = src[key];
+        }
+        return result;
+    }, Object.getOwnPropertySymbols(src).reduce(function (result, symbol) {
+        result[symbol] = src[symbol];
+        return result;
+    }, {}));
+};
+var flat = function (a) { return a.reduce(function (ret, v) { return ret.concat(Array.isArray(v) ? flat(v) : v); }, []); };
+var shuffle = function (a, byRef) {
+    if (byRef === void 0) { byRef = false; }
+    return typeof a === 'string'
+        ? a.split('').sort(function (a, b) { return Math.random() > Math.random() ? 1 : -1; }).join('')
+        : byRef
+            ? a.sort(function (a, b) { return Math.random() > Math.random() ? 1 : -1; })
+            : a.slice().sort(function (a, b) { return Math.random() > Math.random() ? 1 : -1; });
+};
 var UnderscoreF = /** @class */ (function () {
     function UnderscoreF() {
     }
@@ -111,6 +224,28 @@ var UnderscoreF = /** @class */ (function () {
     UnderscoreF.excerpt = function (s, len) { return excerpt(s, len); };
     UnderscoreF.reverse = function (s) { return reverse(s); };
     UnderscoreF.reverseWords = function (s) { return reverseWords(s); };
+    UnderscoreF.toPath = function (s) { return toPath(s); };
+    UnderscoreF.compact = function (a) { return compact(a); };
+    UnderscoreF.first = function (a, byRef) {
+        if (byRef === void 0) { byRef = false; }
+        return first(a, byRef);
+    };
+    UnderscoreF.last = function (a, byRef) {
+        if (byRef === void 0) { byRef = false; }
+        return last(a, byRef);
+    };
+    UnderscoreF.findFirst = function (a, cond, byRef) {
+        if (byRef === void 0) { byRef = false; }
+        return findFirst(a, cond, byRef);
+    };
+    UnderscoreF.findLast = function (a, cond, byRef) {
+        if (byRef === void 0) { byRef = false; }
+        return findLast(a, cond, byRef);
+    };
+    UnderscoreF.unique = function (a) { return unique(a); };
+    UnderscoreF.deepClone = function (a) { return deepClone(a); };
+    UnderscoreF.flat = function (a) { return flat(a); };
+    UnderscoreF.shuffle = function (a) { return shuffle(a); };
     return UnderscoreF;
 }());
 exports.UnderscoreF = UnderscoreF;

@@ -1,7 +1,7 @@
 import assert from 'assert'
-const _s = require('../_s')._s
+const _f = require('../_f')._f
 
-describe('_s test suite', () => {
+describe('_f test suite', () => {
     it('should format a string to PascalCase', () => {
         const tests: any = [
             { s: 'hello_world', expected: 'HelloWorld' },
@@ -9,7 +9,7 @@ describe('_s test suite', () => {
             { s: 'pascal_case_is_cool', expected: 'PascalCaseIsCool' },
         ]
         tests.forEach((test: any) => {
-            assert.equal(_s.pascalCase(test.s), test.expected)
+            assert.equal(_f.pascalCase(test.s), test.expected)
         })
     })
     it('should format a string to camelCase', () => {
@@ -19,7 +19,7 @@ describe('_s test suite', () => {
             { s: 'camel_case_is_cooler', expected: 'camelCaseIsCooler' },
         ]
         tests.forEach((test: any) => {
-            assert.equal(_s.camelCase(test.s), test.expected)
+            assert.equal(_f.camelCase(test.s), test.expected)
         })
     })
     it('should convert new lines to br tags', () => {
@@ -29,7 +29,7 @@ describe('_s test suite', () => {
             { s: 'hello', expected: 'hello' },
         ]
         tests.forEach((test: any) => {
-            assert.equal(_s.nl2br(test.s), test.expected)
+            assert.equal(_f.nl2br(test.s), test.expected)
         })
     })
     it('should convert break tags to new lines', () => {
@@ -39,7 +39,7 @@ describe('_s test suite', () => {
             { s: 'hello<BR  />there', expected: 'hello\nthere' },
         ]
         tests.forEach((test: any) => {
-            assert.equal(_s.br2nl(test.s), test.expected)
+            assert.equal(_f.br2nl(test.s), test.expected)
         })
     })
     it('split a string into parts by length', () => {
@@ -50,7 +50,7 @@ describe('_s test suite', () => {
             { s: 'mo', expected: ['mo'] },
         ]
         tests.forEach((test: any) => {
-            assert.deepEqual(_s.splitByLength(test.s, 3), test.expected)
+            assert.deepEqual(_f.splitByLength(test.s, 3), test.expected)
         })
     })
     it('should upper case words', () => {
@@ -60,7 +60,7 @@ describe('_s test suite', () => {
             { s: 'who are you', expected: 'Who Are You' },
         ]
         tests.forEach((test: any) => {
-            assert.equal(_s.upperCaseWords(test.s), test.expected)
+            assert.equal(_f.upperCaseWords(test.s), test.expected)
         })
     })
     it('should upper case the first letter', () => {
@@ -70,7 +70,7 @@ describe('_s test suite', () => {
             { s: 'who are you', expected: 'Who are you' },
         ]
         tests.forEach((test: any) => {
-            assert.equal(_s.upperCaseFirst(test.s), test.expected)
+            assert.equal(_f.upperCaseFirst(test.s), test.expected)
         })
     })
     it('should upper case the first letter', () => {
@@ -80,7 +80,7 @@ describe('_s test suite', () => {
             { s: 'i am fine! hurray.', expected: 'I am fine! Hurray.' },
         ]
         tests.forEach((test: any) => {
-            assert.equal(_s.upperCaseFirstInSentence(test.s), test.expected)
+            assert.equal(_f.upperCaseFirstInSentence(test.s), test.expected)
         })
     })
     it('should decode html tags', () => {
@@ -90,7 +90,7 @@ describe('_s test suite', () => {
             { s: '<i>testing</i><br>', expected: '&lt;i&gt;testing&lt;/i&gt;&lt;br&gt;'},
         ]
         tests.forEach((test: any) => {
-            assert.equal(_s.decodeHTML(test.s), test.expected)
+            assert.equal(_f.decodeHTML(test.s), test.expected)
         })
     })
     it('should convert a string to only alphabetical characters', () => {
@@ -100,7 +100,7 @@ describe('_s test suite', () => {
             { s: 'br417eak', expected: 'break'},
         ]
         tests.forEach((test: any) => {
-            assert.equal(_s.toAlpha(test.s), test.expected)
+            assert.equal(_f.toAlpha(test.s), test.expected)
         })
     })
     it('should convert a string to only alphabetical characters with exceptions', () => {
@@ -110,7 +110,7 @@ describe('_s test suite', () => {
             { s: 'Bam boo', expected: 'Bamboo'},
         ]
         tests.forEach((test: any) => {
-            assert.equal(_s.toAlpha(test.s, '.!?'), test.expected)
+            assert.equal(_f.toAlpha(test.s, '.!?'), test.expected)
         })
     })
     it('should convert a string to only number characters', () => {
@@ -120,7 +120,7 @@ describe('_s test suite', () => {
             { s: 'br417eak', expected: '417'},
         ]
         tests.forEach((test: any) => {
-            assert.equal(_s.toNumeric(test.s), test.expected)
+            assert.equal(_f.toNumeric(test.s), test.expected)
         })
     })
     it('should convert a string to only alphabetical characters with exceptions', () => {
@@ -130,7 +130,7 @@ describe('_s test suite', () => {
             { s: '902 10', expected: '90210'},
         ]
         tests.forEach((test: any) => {
-            assert.equal(_s.toNumeric(test.s, '-'), test.expected)
+            assert.equal(_f.toNumeric(test.s, '-'), test.expected)
         })
     })
     it('should convert a string to binary', () => {
@@ -140,7 +140,7 @@ describe('_s test suite', () => {
             { s: 'world', expected: '0111011101101111011100100110110001100100'},
         ]
         tests.forEach((test: any) => {
-            assert.equal(_s.toBinary(test.s), test.expected)
+            assert.equal(_f.toBinary(test.s), test.expected)
         })
     })
     it('should convert a string from binary', () => {
@@ -150,7 +150,7 @@ describe('_s test suite', () => {
             { expected: 'world', s: '0111011101101111011100100110110001100100'},
         ]
         tests.forEach((test: any) => {
-            assert.equal(_s.fromBinary(test.s), test.expected)
+            assert.equal(_f.fromBinary(test.s), test.expected)
         })
     })
     it('should convert a string to hex', () => {
@@ -160,7 +160,7 @@ describe('_s test suite', () => {
             { s: 'world', expected: '776f726c64'},
         ]
         tests.forEach((test: any) => {
-            assert.equal(_s.toHex(test.s), test.expected)
+            assert.equal(_f.toHex(test.s), test.expected)
         })
     })
     it('should convert a string from hex', () => {
@@ -170,7 +170,7 @@ describe('_s test suite', () => {
             { expected: 'world', s: '776F726C64'},
         ]
         tests.forEach((test: any) => {
-            assert.equal(_s.fromHex(test.s), test.expected)
+            assert.equal(_f.fromHex(test.s), test.expected)
         })
     })
     it('should convert a string to base64', () => {
@@ -180,7 +180,7 @@ describe('_s test suite', () => {
             { s: 'world', expected: 'd29ybGQ='},
         ]
         tests.forEach((test: any) => {
-            assert.equal(_s.toBase64(test.s), test.expected)
+            assert.equal(_f.toBase64(test.s), test.expected)
         })
     })
     it('should convert a string from base64', () => {
@@ -190,7 +190,7 @@ describe('_s test suite', () => {
             { expected: 'world', s: 'd29ybGQ='},
         ]
         tests.forEach((test: any) => {
-            assert.equal(_s.fromBase64(test.s), test.expected)
+            assert.equal(_f.fromBase64(test.s), test.expected)
         })
     })
     it('should right rotate a string', () => {
@@ -200,7 +200,7 @@ describe('_s test suite', () => {
             { s: 'world', times: 7, expected: 'ldwor'},
         ]
         tests.forEach((test: any) => {
-            assert.equal(_s.rightRotate(test.s, test.times), test.expected)
+            assert.equal(_f.rightRotate(test.s, test.times), test.expected)
         })
     })
     it('should right shift a string', () => {
@@ -210,7 +210,7 @@ describe('_s test suite', () => {
             { s: '1world', times: 5, expected: '000001'},
         ]
         tests.forEach((test: any) => {
-            assert.equal(_s.rightShift(test.s, test.times), test.expected)
+            assert.equal(_f.rightShift(test.s, test.times), test.expected)
         })
     })
     it('should left rotate a string', () => {
@@ -220,7 +220,7 @@ describe('_s test suite', () => {
             { s: 'world', times: 5, expected: 'world'},
         ]
         tests.forEach((test: any) => {
-            assert.equal(_s.leftRotate(test.s, test.times), test.expected)
+            assert.equal(_f.leftRotate(test.s, test.times), test.expected)
         })
     })
     it('should create an excerpt', () => {
@@ -230,7 +230,7 @@ describe('_s test suite', () => {
             { s: 'hi hi hi how', expected: 'hi hi hi...'},
         ]
         tests.forEach((test: any) => {
-            assert.equal(_s.excerpt(test.s, 10), test.expected)
+            assert.equal(_f.excerpt(test.s, 10), test.expected)
         })
     })
     it('should reverse a string', () => {
@@ -239,7 +239,7 @@ describe('_s test suite', () => {
             { s: 'hi there', expected: 'ereht ih' },
         ]
         tests.forEach((test: any) => {
-            assert.equal(_s.reverse(test.s), test.expected)
+            assert.equal(_f.reverse(test.s), test.expected)
         })
     })
     it('should reverse words in a string', () => {
@@ -248,7 +248,46 @@ describe('_s test suite', () => {
             { s: 'hi there', expected: 'there hi' },
         ]
         tests.forEach((test: any) => {
-            assert.equal(_s.reverseWords(test.s), test.expected)
+            assert.equal(_f.reverseWords(test.s), test.expected)
         })
+    })
+    it('should convert a string path to an array', () => {
+        const tests: any = [
+            { s: 'a[1].b.c', expected: ['a', '1', 'b', 'c'] },
+            { s: 'a.b.c.d', expected: ['a', 'b', 'c', 'd'] },
+        ]
+        tests.forEach((test: any) => {
+            assert.deepEqual(_f.toPath(test.s), test.expected)
+        })
+    })
+    it('should compact an array', () => {
+        assert.deepEqual(_f.compact([1, 2, null, false, 3, 4, undefined, 5]), [1, 2, 3, 4, 5])
+    })
+    it('should return the first element', () => {
+        assert.deepEqual(_f.first([1, 2, 3]), 1)
+        const items = [1, 2, 3]
+        assert.equal(_f.first([1, 2, 3], true), items[0])
+    })
+    it('should return the last element', () => {
+        assert.deepEqual(_f.last([1, 2, 3]), 3)
+        const items = [1, 2, 3]
+        assert.equal(_f.last([1, 2, 3], true), items[2])
+    })
+    it('should find the first element in an array matching a condition', () => {
+        assert.deepEqual(_f.findFirst([{a: 1}, {a: 2}, {a: 1, b: 2}], (item: any) => item.a === 1), {a: 1})
+    })
+    it('should find the first element in an array matching a condition by ref', () => {
+        const items = [{a: 1}, {a: 2}, {a: 1, b: 2}]
+        assert.equal(_f.findFirst(items, (item: any) => item.a === 1, true), items[0])
+    })
+    it('should find the last element in an array matching a condition', () => {
+        assert.deepEqual(_f.findLast([{a: 1}, {a: 2}, {a: 1, b: 2}], (item: any) => item.a === 1), {a: 1, b: 2})
+    })
+    it('should find the first element in an array matching a condition by ref', () => {
+        const items = [{a: 1}, {a: 2}, {a: 1, b: 2}]
+        assert.equal(_f.findLast(items, (item: any) => item.a === 1, true), items[2])
+    })
+    it('should compact grab unique values in an array', () => {
+        assert.deepEqual(_f.unique([1, 2, 3, 4, 2, 5, 2]), [1, 2, 3, 4, 5])
     })
 })
