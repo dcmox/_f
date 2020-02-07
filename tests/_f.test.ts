@@ -329,4 +329,8 @@ describe('_f test suite', () => {
         assert.notDeepEqual(id, id2)
         assert.notDeepEqual(id2, id3)
     })
+    it('should partition an array', () => {
+        assert.deepEqual(_f.partition([1, 2, 3, 4, 5, 6], 2), [[1, 2], [3, 4], [5, 6]])
+        assert.deepEqual(_f.partition([1, 2, 3, 4, 5, 6], 3), [[1, 2, 3], [4, 5, 6]])
+    })
 })

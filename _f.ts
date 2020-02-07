@@ -208,6 +208,17 @@ const range = (s: number, e?: number, m?: number) =>
     ? Array.from({length: e - s}, (x: any, i: number) => i + s)
     : Array.from({length: s}, (x: any, i: number) => i)
 
+const partition = (a: any[], size: number) => {
+    return a.reduce((acc: any[], item: any) => {
+        acc[acc.length - 1]
+        ? acc[acc.length - 1].length < size
+        ? acc[acc.length - 1].push(item)
+        : acc[acc.length] = [ item ]
+        : acc[acc.length] = [ item ]
+        return acc
+    }, [])
+}
+
 const unixTimestamp = () => new Date().valueOf()
 
 const uniqueId = (prefix?: string, postfix?: string) => {
@@ -269,6 +280,7 @@ export class UnderscoreF {
     public static range = (start: number, end?: number, multiplier?: number) => range(start, end, multiplier)
     public static unixTimestamp = () => unixTimestamp()
     public static uniqueId = (prefix?: string, postfix?: string) => uniqueId(prefix, postfix)
+    public static partition = (a: any[], size: number) => partition(a, size)
 }
 
 export const _f = UnderscoreF

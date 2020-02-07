@@ -1,4 +1,3 @@
-/* Copyright 2020 Daniel Moxon @ https://github.com/dcmox/_f */
 "use strict";
 exports.__esModule = true;
 // tslint:disable: object-literal-sort-keys
@@ -232,6 +231,16 @@ var range = function (s, e, m) {
             ? Array.from({ length: e - s }, function (x, i) { return i + s; })
             : Array.from({ length: s }, function (x, i) { return i; });
 };
+var partition = function (a, size) {
+    return a.reduce(function (acc, item) {
+        acc[acc.length - 1]
+            ? acc[acc.length - 1].length < size
+                ? acc[acc.length - 1].push(item)
+                : acc[acc.length] = [item]
+            : acc[acc.length] = [item];
+        return acc;
+    }, []);
+};
 var unixTimestamp = function () { return new Date().valueOf(); };
 var uniqueId = function (prefix, postfix) {
     return (prefix || '')
@@ -308,6 +317,7 @@ var UnderscoreF = /** @class */ (function () {
     UnderscoreF.range = function (start, end, multiplier) { return range(start, end, multiplier); };
     UnderscoreF.unixTimestamp = function () { return unixTimestamp(); };
     UnderscoreF.uniqueId = function (prefix, postfix) { return uniqueId(prefix, postfix); };
+    UnderscoreF.partition = function (a, size) { return partition(a, size); };
     return UnderscoreF;
 }());
 exports.UnderscoreF = UnderscoreF;

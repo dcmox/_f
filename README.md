@@ -42,6 +42,7 @@ Moxy String and Array manipulation library for TypeScript / NodeJS. Array functi
 * flat = (a: any) => Flatten an array
 * shuffle = (a: string | any[]) => Shuffle an array
 * range = (start: number, end?: number, multiplier?: number) => Creates a range of numbers
+* partition = (a: any[], size: number) => Partitions an array into segments of X size
 
 ## Date Functions
 * unixTimestamp = () => Returns the time in milliseconds since the Unix epoch (00:00:00 UTC on 1 January 1970)
