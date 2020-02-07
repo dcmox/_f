@@ -83,6 +83,7 @@ const keyToField = (s: string, strip?: string): string =>
         .trim()
 
 const compact = (a: any[]): any[] => a.filter((itm: any) => itm)
+
 const first = (a: any[], byRef: boolean = false): any => {
     if (byRef) {
         for (const i in a) { if (a[i]) { return a[i] } }
@@ -90,6 +91,7 @@ const first = (a: any[], byRef: boolean = false): any => {
         return a.slice().shift()
     }
 }
+
 const last = (a: any[], byRef: boolean = false): any => {
     if (byRef) {
         const temp: any = a.filter((item: any) => item !== undefined)
@@ -184,6 +186,28 @@ const shuffle = (a: string | any[], byRef: boolean = false) =>
     ? a.sort((a: any, b: any) => Math.random() > Math.random() ? 1 : -1)
     : a.slice().sort((a: any, b: any) => Math.random() > Math.random() ? 1 : -1)
 
+const isNumeric = (s: string | number, ignoreChars?: string) =>
+    ignoreChars
+    ? !s.toString().match(new RegExp(`[^0-9${ignoreChars.split('').map((c: string) => '\\' + c).join('|')}]`, 'gi'))
+    : !s.toString().match(/[^0-9]/g)
+
+const isAlpha = (s: string, ignoreChars?: string) =>
+    ignoreChars
+    ? !s.toString().match(new RegExp(`[^A-Z${ignoreChars.split('').map((c: string) => '\\' + c).join('|')}]`, 'gi'))
+    : !s.toString().match(/[^A-Z]/gi)
+
+const isAlphaNumeric = (s: string, ignoreChars?: string) =>
+    ignoreChars
+    ? !s.toString().match(new RegExp(`[^A-Z0-9${ignoreChars.split('').map((c: string) => '\\' + c).join('|')}]`, 'gi'))
+    : !s.toString().match(/[^A-Z0-9]/gi)
+
+const range = (s: number, e?: number, m?: number) =>
+    e && m
+    ? Array.from({length: Math.ceil((e - s) / m)}, (x: any, i: number) => (i * m) + s )
+    : e
+    ? Array.from({length: e - s}, (x: any, i: number) => i + s)
+    : Array.from({length: s}, (x: any, i: number) => i)
+
 export class UnderscoreF {
     public static pascalCase = (s: string): string => pascalCase(s)
     public static camelCase = (s: string): string => camelCase(s)
@@ -219,6 +243,10 @@ export class UnderscoreF {
     public static deepClone = (a: any) => deepClone(a)
     public static flat = (a: any) => flat(a)
     public static shuffle = (a: string | any[]) => shuffle(a)
+    public static isAlpha = (s: string, ignoreChars?: string) => isAlpha(s, ignoreChars)
+    public static isNumeric = (s: string, ignoreChars?: string) => isNumeric(s, ignoreChars)
+    public static isAlphaNumeric = (s: string, ignoreChars?: string) => isAlphaNumeric(s, ignoreChars)
+    public static range = (start: number, end?: number, multiplier?: number) => range(start, end, multiplier)
 }
 
 export const _f = UnderscoreF

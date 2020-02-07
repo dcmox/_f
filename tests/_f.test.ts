@@ -300,4 +300,26 @@ describe('_f test suite', () => {
     it('should compact grab unique values in an array', () => {
         assert.deepEqual(_f.unique([1, 2, 3, 4, 2, 5, 2]), [1, 2, 3, 4, 5])
     })
+    it('should test if a string contains only alpha characters', () => {
+        assert.deepEqual(_f.isAlpha('abc'), true)
+        assert.deepEqual(_f.isAlpha('abc-test', '-'), true)
+        assert.deepEqual(_f.isAlpha('abc-test1', '-'), false)
+    })
+    it('should test if a string contains only numeric characters', () => {
+        assert.deepEqual(_f.isNumeric('abc'), false)
+        assert.deepEqual(_f.isNumeric('123-456', '-'), true)
+        assert.deepEqual(_f.isNumeric('1234'), true)
+    })
+    it('should test if a string contains only alpha-numeric characters', () => {
+        assert.deepEqual(_f.isAlphaNumeric('abc123'), true)
+        assert.deepEqual(_f.isAlphaNumeric('123-abc', '-'), true)
+        assert.deepEqual(_f.isAlphaNumeric('1234'), true)
+        assert.deepEqual(_f.isAlphaNumeric('1234>'), false)
+    })
+    it('should create a range', () => {
+        assert.deepEqual(_f.range(1, 9), [1, 2, 3, 4, 5, 6, 7, 8])
+        assert.deepEqual(_f.range(0, 10, 2), [0, 2, 4, 6, 8])
+        assert.deepEqual(_f.range(0, -20, -2), [0, -2, -4, -6, -8, -10, -12, -14, -16, -18])
+        assert.deepEqual(_f.range(0, -20, 1), [])
+    })
 })

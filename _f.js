@@ -209,6 +209,28 @@ var shuffle = function (a, byRef) {
             ? a.sort(function (a, b) { return Math.random() > Math.random() ? 1 : -1; })
             : a.slice().sort(function (a, b) { return Math.random() > Math.random() ? 1 : -1; });
 };
+var isNumeric = function (s, ignoreChars) {
+    return ignoreChars
+        ? !s.toString().match(new RegExp("[^0-9" + ignoreChars.split('').map(function (c) { return '\\' + c; }).join('|') + "]", 'gi'))
+        : !s.toString().match(/[^0-9]/g);
+};
+var isAlpha = function (s, ignoreChars) {
+    return ignoreChars
+        ? !s.toString().match(new RegExp("[^A-Z" + ignoreChars.split('').map(function (c) { return '\\' + c; }).join('|') + "]", 'gi'))
+        : !s.toString().match(/[^A-Z]/gi);
+};
+var isAlphaNumeric = function (s, ignoreChars) {
+    return ignoreChars
+        ? !s.toString().match(new RegExp("[^A-Z0-9" + ignoreChars.split('').map(function (c) { return '\\' + c; }).join('|') + "]", 'gi'))
+        : !s.toString().match(/[^A-Z0-9]/gi);
+};
+var range = function (s, e, m) {
+    return e && m
+        ? Array.from({ length: Math.ceil((e - s) / m) }, function (x, i) { return (i * m) + s; })
+        : e
+            ? Array.from({ length: e - s }, function (x, i) { return i + s; })
+            : Array.from({ length: s }, function (x, i) { return i; });
+};
 var UnderscoreF = /** @class */ (function () {
     function UnderscoreF() {
     }
@@ -261,6 +283,10 @@ var UnderscoreF = /** @class */ (function () {
     UnderscoreF.deepClone = function (a) { return deepClone(a); };
     UnderscoreF.flat = function (a) { return flat(a); };
     UnderscoreF.shuffle = function (a) { return shuffle(a); };
+    UnderscoreF.isAlpha = function (s, ignoreChars) { return isAlpha(s, ignoreChars); };
+    UnderscoreF.isNumeric = function (s, ignoreChars) { return isNumeric(s, ignoreChars); };
+    UnderscoreF.isAlphaNumeric = function (s, ignoreChars) { return isAlphaNumeric(s, ignoreChars); };
+    UnderscoreF.range = function (start, end, multiplier) { return range(start, end, multiplier); };
     return UnderscoreF;
 }());
 exports.UnderscoreF = UnderscoreF;

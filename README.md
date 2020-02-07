@@ -26,6 +26,10 @@ Moxy String and Array manipulation library for TypeScript / NodeJS. Array functi
 * reverseWords = (s: string) => Reverses words in a string
 * shuffle = (a: string | any[]) => Shuffle a string
 * keyToField = (s: string, strip?: string) => Converts a key to a human readable field
+* isAlpha = (s: string, ignoreChars?: string) => Returns true if the string contains only alpha characters, with an optional set of characters to ignore
+* isNumeric = (s: string, ignoreChars?: string) => Returns true if the string contains only numeric characters, with an optional set of characters to ignore
+* isAlphaNumeric = (s: string, ignoreChars?: string) =>  Returns true if the string contains only alpha numeric characters, with an optional set of characters to ignore
+* range = (start: number, end?: number, multiplier?: number) => Creates a range of numbers
 
 ## Array Functions
 * compact = (a: any[]) => Removes values that are falsey
