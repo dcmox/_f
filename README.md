@@ -29,7 +29,6 @@ Moxy String and Array manipulation library for TypeScript / NodeJS. Array functi
 * isAlpha = (s: string, ignoreChars?: string) => Returns true if the string contains only alpha characters, with an optional set of characters to ignore
 * isNumeric = (s: string, ignoreChars?: string) => Returns true if the string contains only numeric characters, with an optional set of characters to ignore
 * isAlphaNumeric = (s: string, ignoreChars?: string) =>  Returns true if the string contains only alpha numeric characters, with an optional set of characters to ignore
-* range = (start: number, end?: number, multiplier?: number) => Creates a range of numbers
 
 ## Array Functions
 * compact = (a: any[]) => Removes values that are falsey
@@ -41,6 +40,10 @@ Moxy String and Array manipulation library for TypeScript / NodeJS. Array functi
 * deepClone = (a: any) => Deep clone an object or array so that is is a pure copy
 * flat = (a: any) => Flatten an array
 * shuffle = (a: string | any[]) => Shuffle an array
+* range = (start: number, end?: number, multiplier?: number) => Creates a range of numbers
+
+## Date Functions
+* unixTimestamp = () => Returns the time in milliseconds since the Unix epoch (00:00:00 UTC on 1 January 1970)
 
 ## Usage
 ```typescript

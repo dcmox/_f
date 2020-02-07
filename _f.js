@@ -231,6 +231,7 @@ var range = function (s, e, m) {
             ? Array.from({ length: e - s }, function (x, i) { return i + s; })
             : Array.from({ length: s }, function (x, i) { return i; });
 };
+var unixTimestamp = function () { return new Date().valueOf(); };
 var UnderscoreF = /** @class */ (function () {
     function UnderscoreF() {
     }
@@ -287,6 +288,7 @@ var UnderscoreF = /** @class */ (function () {
     UnderscoreF.isNumeric = function (s, ignoreChars) { return isNumeric(s, ignoreChars); };
     UnderscoreF.isAlphaNumeric = function (s, ignoreChars) { return isAlphaNumeric(s, ignoreChars); };
     UnderscoreF.range = function (start, end, multiplier) { return range(start, end, multiplier); };
+    UnderscoreF.unixTimestamp = function () { return unixTimestamp(); };
     return UnderscoreF;
 }());
 exports.UnderscoreF = UnderscoreF;

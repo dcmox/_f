@@ -208,6 +208,8 @@ const range = (s: number, e?: number, m?: number) =>
     ? Array.from({length: e - s}, (x: any, i: number) => i + s)
     : Array.from({length: s}, (x: any, i: number) => i)
 
+const unixTimestamp = () => new Date().valueOf()
+
 export class UnderscoreF {
     public static pascalCase = (s: string): string => pascalCase(s)
     public static camelCase = (s: string): string => camelCase(s)
@@ -247,6 +249,7 @@ export class UnderscoreF {
     public static isNumeric = (s: string, ignoreChars?: string) => isNumeric(s, ignoreChars)
     public static isAlphaNumeric = (s: string, ignoreChars?: string) => isAlphaNumeric(s, ignoreChars)
     public static range = (start: number, end?: number, multiplier?: number) => range(start, end, multiplier)
+    public static unixTimestamp = () => unixTimestamp()
 }
 
 export const _f = UnderscoreF
