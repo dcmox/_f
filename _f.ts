@@ -210,6 +210,24 @@ const range = (s: number, e?: number, m?: number) =>
 
 const unixTimestamp = () => new Date().valueOf()
 
+const uniqueId = (prefix?: string, postfix?: string) => {
+    return (prefix || '')
+        + (process && process.pid ? process.pid.toString(36) : '')
+        + Timestamp.get().toString(36)
+        + (postfix || '')
+}
+
+class Timestamp {
+    public static time: any
+    public static last: any
+    public static get(): number {
+        this.time = new Date().valueOf()
+        this.last = this.last || this.time
+        return this.last = this.time > this.last ? this.time : this.last + 1
+    }
+}
+
+// tslint:disable-next-line: max-classes-per-file
 export class UnderscoreF {
     public static pascalCase = (s: string): string => pascalCase(s)
     public static camelCase = (s: string): string => camelCase(s)
@@ -250,6 +268,7 @@ export class UnderscoreF {
     public static isAlphaNumeric = (s: string, ignoreChars?: string) => isAlphaNumeric(s, ignoreChars)
     public static range = (start: number, end?: number, multiplier?: number) => range(start, end, multiplier)
     public static unixTimestamp = () => unixTimestamp()
+    public static uniqueId = (prefix?: string, postfix?: string) => uniqueId(prefix, postfix)
 }
 
 export const _f = UnderscoreF

@@ -322,4 +322,11 @@ describe('_f test suite', () => {
         assert.deepEqual(_f.range(0, -20, -2), [0, -2, -4, -6, -8, -10, -12, -14, -16, -18])
         assert.deepEqual(_f.range(0, -20, 1), [])
     })
+    it('should create a unique id', () => {
+        const id = _f.uniqueId()
+        const id2 = _f.uniqueId()
+        const id3 = _f.uniqueId()
+        assert.notDeepEqual(id, id2)
+        assert.notDeepEqual(id2, id3)
+    })
 })

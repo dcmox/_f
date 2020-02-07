@@ -29,6 +29,7 @@ Moxy String and Array manipulation library for TypeScript / NodeJS. Array functi
 * isAlpha = (s: string, ignoreChars?: string) => Returns true if the string contains only alpha characters, with an optional set of characters to ignore
 * isNumeric = (s: string, ignoreChars?: string) => Returns true if the string contains only numeric characters, with an optional set of characters to ignore
 * isAlphaNumeric = (s: string, ignoreChars?: string) =>  Returns true if the string contains only alpha numeric characters, with an optional set of characters to ignore
+* uniqueId = (prefix?: string, postfix?: string) => Generates a unique ID
 
 ## Array Functions
 * compact = (a: any[]) => Removes values that are falsey

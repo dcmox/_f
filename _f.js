@@ -1,3 +1,4 @@
+/* Copyright 2020 Daniel Moxon @ https://github.com/dcmox/_f */
 "use strict";
 exports.__esModule = true;
 // tslint:disable: object-literal-sort-keys
@@ -232,6 +233,23 @@ var range = function (s, e, m) {
             : Array.from({ length: s }, function (x, i) { return i; });
 };
 var unixTimestamp = function () { return new Date().valueOf(); };
+var uniqueId = function (prefix, postfix) {
+    return (prefix || '')
+        + (process && process.pid ? process.pid.toString(36) : '')
+        + Timestamp.get().toString(36)
+        + (postfix || '');
+};
+var Timestamp = /** @class */ (function () {
+    function Timestamp() {
+    }
+    Timestamp.get = function () {
+        this.time = new Date().valueOf();
+        this.last = this.last || this.time;
+        return this.last = this.time > this.last ? this.time : this.last + 1;
+    };
+    return Timestamp;
+}());
+// tslint:disable-next-line: max-classes-per-file
 var UnderscoreF = /** @class */ (function () {
     function UnderscoreF() {
     }
@@ -289,6 +307,7 @@ var UnderscoreF = /** @class */ (function () {
     UnderscoreF.isAlphaNumeric = function (s, ignoreChars) { return isAlphaNumeric(s, ignoreChars); };
     UnderscoreF.range = function (start, end, multiplier) { return range(start, end, multiplier); };
     UnderscoreF.unixTimestamp = function () { return unixTimestamp(); };
+    UnderscoreF.uniqueId = function (prefix, postfix) { return uniqueId(prefix, postfix); };
     return UnderscoreF;
 }());
 exports.UnderscoreF = UnderscoreF;
