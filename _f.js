@@ -98,8 +98,8 @@ var getRepeatingSequences = function (s, ignoreCase, minRepeat) {
     if (ignoreCase === void 0) { ignoreCase = true; }
     if (minRepeat === void 0) { minRepeat = 2; }
     return ignoreCase
-        ? s.match(new RegExp("(.)\\1{" + minRepeat + ",}", 'gi'))
-        : s.match(new RegExp("(.)\\1{" + minRepeat + ",}", 'g'));
+        ? s.match(new RegExp("(.+)\\1{" + minRepeat + ",}", 'gi'))
+        : s.match(new RegExp("(.+)\\1{" + minRepeat + ",}", 'g'));
 };
 var hasRepeatingSequences = function (s, ignoreCase, minRepeat) {
     if (ignoreCase === void 0) { ignoreCase = true; }

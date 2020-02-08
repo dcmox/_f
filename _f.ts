@@ -76,8 +76,8 @@ const isShouting = (s: string, threshold: number = 0.51) =>
 
 const getRepeatingSequences = (s: string, ignoreCase: boolean = true, minRepeat: number = 2) =>
     ignoreCase
-    ? s.match(new RegExp(`(.)\\1{${minRepeat},}`, 'gi'))
-    : s.match(new RegExp(`(.)\\1{${minRepeat},}`, 'g'))
+    ? s.match(new RegExp(`(.+)\\1{${minRepeat},}`, 'gi'))
+    : s.match(new RegExp(`(.+)\\1{${minRepeat},}`, 'g'))
 
 const hasRepeatingSequences = (s: string, ignoreCase: boolean = true, minRepeat: number = 2) =>
     ignoreCase

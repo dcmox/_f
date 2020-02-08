@@ -292,7 +292,7 @@ describe('_f test suite', () => {
     it('should detect repeating sequences in a string', () => {
         const tests: any = [
             { s: 'abcabcabc', expected: ['abcabcabc'] },
-            { s: 'ararbarbarbar', expected: ['barbarbar'] },
+            { s: 'ararbarbarbar', expected: ['arbarbarb'] },
             { s: 'jello mello fello hello hello hello', expected: ['hello hello hello'] },
             { s: 'test', expected: null },
         ]
