@@ -279,6 +279,16 @@ describe('_f test suite', () => {
             assert.deepEqual(_f.keyToField(test.s, 'user'), test.expected)
         })
     })
+    it('should detect if a string is mostly in caps, aka SHOUTING', () => {
+        const tests: any = [
+            { s: 'ROTC Certified', expected: false },
+            { s: 'DID you know I AM SHOUTING?', expected: true },
+            { s: 'SHOUT OUT!', expected: true },
+        ]
+        tests.forEach((test: any) => {
+            assert.deepEqual(_f.isShouting(test.s), test.expected)
+        })
+    })
     it('should compact an array', () => {
         assert.deepEqual(_f.compact([1, 2, null, false, 3, 4, undefined, 5]), [1, 2, 3, 4, 5])
     })

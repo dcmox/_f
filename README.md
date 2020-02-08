@@ -32,6 +32,7 @@ Moxy String and Array manipulation library for TypeScript / NodeJS. Array functi
 * uniqueId = (prefix?: string, postfix?: string) => Generates a unique ID
 * firstUniqueCharacter = (s: string) => Returns the first non-repeating character in a string
 * randomString = (len: number, charSet?: string) => Generates a random string of N length using an optionally defined character set.
+* isShouting = (s: string, optionalThreshold?: number) => Returns true if a sentence (more than 5 characters long) is detected as being SHOUTED OUT. Threshold is the percentage of uppercase text.
 
 ## Array Functions
 * compact = (a: any[]) => Removes values that are falsey

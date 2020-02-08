@@ -71,6 +71,9 @@ const toPath = (s: string): string[] => s.replace(/\[|\]/g, '.').split('.').filt
 const firstUniqueCharacter = (s: string): string => s.split('').find((c) => s.indexOf(c) === s.lastIndexOf(c)) || ''
 const randomString = (len: number = 10, charset: string = '!@#%=*_-~23456789abcdefghijkmnopqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ'): string =>
     Array.from({length: len}, (c: any) => charset.charAt(Math.floor(Math.random() * charset.length))).join('')
+const isShouting = (s: string, threshold: number = 0.51) =>
+    (s.match(/[A-Z]/g)?.length || 0) / s.length >= threshold && s.length > 5
+
 const keyToField = (s: string, strip?: string): string =>
     strip
     ? s.replace(new RegExp(`${strip}`, 'g'), '')
@@ -286,6 +289,7 @@ export class UnderscoreF {
     public static partition = (a: any[], size: number) => partition(a, size)
     public static firstUniqueCharacter = (s: string) => firstUniqueCharacter(s)
     public static randomString = (len: number, charSet?: string) => randomString(len, charSet)
+    public static isShouting = (s: string, threshold: number = 0.51) => isShouting(s, threshold)
 }
 
 export const _f = UnderscoreF

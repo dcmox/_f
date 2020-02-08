@@ -89,6 +89,11 @@ var randomString = function (len, charset) {
     if (charset === void 0) { charset = '!@#%=*_-~23456789abcdefghijkmnopqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ'; }
     return Array.from({ length: len }, function (c) { return charset.charAt(Math.floor(Math.random() * charset.length)); }).join('');
 };
+var isShouting = function (s, threshold) {
+    if (threshold === void 0) { threshold = 0.51; }
+    var _a;
+    return (((_a = s.match(/[A-Z]/g)) === null || _a === void 0 ? void 0 : _a.length) || 0) / s.length >= threshold && s.length > 5;
+};
 var keyToField = function (s, strip) {
     return strip
         ? s.replace(new RegExp("" + strip, 'g'), '')
@@ -326,6 +331,10 @@ var UnderscoreF = /** @class */ (function () {
     UnderscoreF.partition = function (a, size) { return partition(a, size); };
     UnderscoreF.firstUniqueCharacter = function (s) { return firstUniqueCharacter(s); };
     UnderscoreF.randomString = function (len, charSet) { return randomString(len, charSet); };
+    UnderscoreF.isShouting = function (s, threshold) {
+        if (threshold === void 0) { threshold = 0.51; }
+        return isShouting(s, threshold);
+    };
     return UnderscoreF;
 }());
 exports.UnderscoreF = UnderscoreF;
