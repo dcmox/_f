@@ -37,6 +37,8 @@ Moxy String and Array manipulation library for TypeScript / NodeJS. Array functi
 * hasRepeatingCharacters = (s: string, ignoreCase?: boolean, minRepeat: number = 2) => Returns true if a string has repeating characters, `booo` = 2 repeated 'o' characters.
 * getRepeatingSets = (s: string, ignoreCase?: boolean, minRepeat: number = 2) => Get all repeating sets in a string
 * hasRepeatingSets = (s: string, ignoreCase?: boolean, minRepeat: number = 2) => Returns true if a string has repeating sets, `hellohellohello` = 2 repeated 'hello' sets.
+* getRepeatingSequences = (s: string, ignoreCase?: boolean) => Returns all repeating sequences (eg. 123, abc, 321) in a string
+* hasRepeatingSequences = (s: string, ignoreCase?: boolean) => Returns true if a string has characters or numbers in sequence or reverse sequence  (eg. 123, abc, 321)
 
 ## Array Functions
 * compact = (a: any[]) => Removes values that are falsey

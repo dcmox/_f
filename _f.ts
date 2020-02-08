@@ -74,25 +74,18 @@ const randomString = (len: number = 10, charset: string = '!@#%=*_-~23456789abcd
 const isShouting = (s: string, threshold: number = 0.51) =>
     (s.match(/[A-Z]/g)?.length || 0) / s.length >= threshold && s.length > 5
 
-const getRepeatingSets = (s: string, ignoreCase: boolean = true, minRepeat: number = 2) =>
-    ignoreCase
-    ? s.match(new RegExp(`(.+)\\1{${minRepeat},}`, 'gi'))
-    : s.match(new RegExp(`(.+)\\1{${minRepeat},}`, 'g'))
+const getRepeatingSequences = (s: string, ignoreCase: boolean = true) => s.match(new RegExp (`(?:abc|bcd|cde|def|efg|fgh|ghi|hij|ijk|jkl|klm|lmn|mno|nop|opq|pqr|qrs|rst|stu|tuv|uvw|vwx|wxy|xyz`
+    + `|zyx|xyw|xwv|wvu|vut|uts|tsr|srq|rqp|qpo|pon|onm|nml|mlk|lkj|kji|jih|ihg|hgf|gfe|fed|edc|dcb|cba`
+    + `|012|123|234|345|456|567|678|789|890|098|987|876|765|654|543|432|321|210)`, ignoreCase ? 'gi' : 'g'))
 
-const hasRepeatingSets = (s: string, ignoreCase: boolean = true, minRepeat: number = 2) =>
-    ignoreCase
-    ? new RegExp(`(.+)\\1{${minRepeat},}`, 'gi').test(s)
-    : new RegExp(`(.+)\\1{${minRepeat},}`, 'g').test(s)
+const hasRepeatingSequences = (s: string, ignoreCase: boolean = true) => new RegExp (`(?:abc|bcd|cde|def|efg|fgh|ghi|hij|ijk|jkl|klm|lmn|mno|nop|opq|pqr|qrs|rst|stu|tuv|uvw|vwx|wxy|xyz`
+    + `|zyx|xyw|xwv|wvu|vut|uts|tsr|srq|rqp|qpo|pon|onm|nml|mlk|lkj|kji|jih|ihg|hgf|gfe|fed|edc|dcb|cba`
+    + `|012|123|234|345|456|567|678|789|890|098|987|876|765|654|543|432|321|210)`, ignoreCase ? 'gi' : 'g').test(s)
 
-const getRepeatingCharacters = (s: string, ignoreCase: boolean = true, minRepeat: number = 2) =>
-    ignoreCase
-    ? s.match(new RegExp(`(.)\\1{${minRepeat},}`, 'gi'))
-    : s.match(new RegExp(`(.)\\1{${minRepeat},}`, 'g'))
-
-const hasRepeatingCharacters = (s: string, ignoreCase: boolean = true, minRepeat: number = 2) =>
-    ignoreCase
-    ? new RegExp(`(.)\\1{${minRepeat},}`, 'gi').test(s)
-    : new RegExp(`(.)\\1{${minRepeat},}`, 'g').test(s)
+const getRepeatingSets = (s: string, ignoreCase: boolean = true, minRepeat: number = 2) => s.match(new RegExp(`(.+)\\1{${minRepeat},}`, ignoreCase ? 'gi' : 'g'))
+const hasRepeatingSets = (s: string, ignoreCase: boolean = true, minRepeat: number = 2) => new RegExp(`(.+)\\1{${minRepeat},}`, ignoreCase ? 'gi' : 'g').test(s)
+const getRepeatingCharacters = (s: string, ignoreCase: boolean = true, minRepeat: number = 2) => s.match(new RegExp(`(.)\\1{${minRepeat},}`, ignoreCase ? 'gi' : 'g'))
+const hasRepeatingCharacters = (s: string, ignoreCase: boolean = true, minRepeat: number = 2) => new RegExp(`(.)\\1{${minRepeat},}`, ignoreCase ? 'gi' : 'g').test(s)
 
 const keyToField = (s: string, strip?: string): string =>
     strip
@@ -318,6 +311,8 @@ export class UnderscoreF {
                                       minRepeat: number = 2) => getRepeatingSets(s, ignoreCase, minRepeat)
     public static hasRepeatingSets = (s: string, ignoreCase?: boolean,
                                       minRepeat: number = 2) => hasRepeatingSets(s, ignoreCase, minRepeat)
+    public static getRepeatingSequences = (s: string, ignoreCase?: boolean) => getRepeatingSequences(s, ignoreCase)
+    public static hasRepeatingSequences = (s: string, ignoreCase?: boolean) => hasRepeatingSequences(s, ignoreCase)
 }
 
 export const _f = UnderscoreF

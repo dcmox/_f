@@ -94,33 +94,37 @@ var isShouting = function (s, threshold) {
     var _a;
     return (((_a = s.match(/[A-Z]/g)) === null || _a === void 0 ? void 0 : _a.length) || 0) / s.length >= threshold && s.length > 5;
 };
+var getRepeatingSequences = function (s, ignoreCase) {
+    if (ignoreCase === void 0) { ignoreCase = true; }
+    return s.match(new RegExp("(?:abc|bcd|cde|def|efg|fgh|ghi|hij|ijk|jkl|klm|lmn|mno|nop|opq|pqr|qrs|rst|stu|tuv|uvw|vwx|wxy|xyz"
+        + "|zyx|xyw|xwv|wvu|vut|uts|tsr|srq|rqp|qpo|pon|onm|nml|mlk|lkj|kji|jih|ihg|hgf|gfe|fed|edc|dcb|cba"
+        + "|012|123|234|345|456|567|678|789|890|098|987|876|765|654|543|432|321|210)", ignoreCase ? 'gi' : 'g'));
+};
+var hasRepeatingSequences = function (s, ignoreCase) {
+    if (ignoreCase === void 0) { ignoreCase = true; }
+    return new RegExp("(?:abc|bcd|cde|def|efg|fgh|ghi|hij|ijk|jkl|klm|lmn|mno|nop|opq|pqr|qrs|rst|stu|tuv|uvw|vwx|wxy|xyz"
+        + "|zyx|xyw|xwv|wvu|vut|uts|tsr|srq|rqp|qpo|pon|onm|nml|mlk|lkj|kji|jih|ihg|hgf|gfe|fed|edc|dcb|cba"
+        + "|012|123|234|345|456|567|678|789|890|098|987|876|765|654|543|432|321|210)", ignoreCase ? 'gi' : 'g').test(s);
+};
 var getRepeatingSets = function (s, ignoreCase, minRepeat) {
     if (ignoreCase === void 0) { ignoreCase = true; }
     if (minRepeat === void 0) { minRepeat = 2; }
-    return ignoreCase
-        ? s.match(new RegExp("(.+)\\1{" + minRepeat + ",}", 'gi'))
-        : s.match(new RegExp("(.+)\\1{" + minRepeat + ",}", 'g'));
+    return s.match(new RegExp("(.+)\\1{" + minRepeat + ",}", ignoreCase ? 'gi' : 'g'));
 };
 var hasRepeatingSets = function (s, ignoreCase, minRepeat) {
     if (ignoreCase === void 0) { ignoreCase = true; }
     if (minRepeat === void 0) { minRepeat = 2; }
-    return ignoreCase
-        ? new RegExp("(.+)\\1{" + minRepeat + ",}", 'gi').test(s)
-        : new RegExp("(.+)\\1{" + minRepeat + ",}", 'g').test(s);
+    return new RegExp("(.+)\\1{" + minRepeat + ",}", ignoreCase ? 'gi' : 'g').test(s);
 };
 var getRepeatingCharacters = function (s, ignoreCase, minRepeat) {
     if (ignoreCase === void 0) { ignoreCase = true; }
     if (minRepeat === void 0) { minRepeat = 2; }
-    return ignoreCase
-        ? s.match(new RegExp("(.)\\1{" + minRepeat + ",}", 'gi'))
-        : s.match(new RegExp("(.)\\1{" + minRepeat + ",}", 'g'));
+    return s.match(new RegExp("(.)\\1{" + minRepeat + ",}", ignoreCase ? 'gi' : 'g'));
 };
 var hasRepeatingCharacters = function (s, ignoreCase, minRepeat) {
     if (ignoreCase === void 0) { ignoreCase = true; }
     if (minRepeat === void 0) { minRepeat = 2; }
-    return ignoreCase
-        ? new RegExp("(.)\\1{" + minRepeat + ",}", 'gi').test(s)
-        : new RegExp("(.)\\1{" + minRepeat + ",}", 'g').test(s);
+    return new RegExp("(.)\\1{" + minRepeat + ",}", ignoreCase ? 'gi' : 'g').test(s);
 };
 var keyToField = function (s, strip) {
     return strip
@@ -379,6 +383,8 @@ var UnderscoreF = /** @class */ (function () {
         if (minRepeat === void 0) { minRepeat = 2; }
         return hasRepeatingSets(s, ignoreCase, minRepeat);
     };
+    UnderscoreF.getRepeatingSequences = function (s, ignoreCase) { return getRepeatingSequences(s, ignoreCase); };
+    UnderscoreF.hasRepeatingSequences = function (s, ignoreCase) { return hasRepeatingSequences(s, ignoreCase); };
     return UnderscoreF;
 }());
 exports.UnderscoreF = UnderscoreF;
