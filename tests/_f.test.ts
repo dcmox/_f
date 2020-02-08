@@ -353,6 +353,12 @@ describe('_f test suite', () => {
             assert.deepEqual(_f.hasRepeatingCharacters(test.s), test.expected)
         })
     })
+    it('should generate a number between 1 and 100', () => {
+        const number = _f.secureRandomNumber(1, 100)
+        assert.equal(number >= 1 && number <= 100, true)
+        const number2 = _f.secureRandomNumber(333, 444)
+        assert.equal(number2 >= 333 && number <= 444, true)
+    })
     it('should compact an array', () => {
         assert.deepEqual(_f.compact([1, 2, null, false, 3, 4, undefined, 5]), [1, 2, 3, 4, 5])
     })

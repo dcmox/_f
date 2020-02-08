@@ -53,6 +53,9 @@ Moxy String and Array manipulation library for TypeScript / NodeJS. Array functi
 * range = (start: number, end?: number, multiplier?: number) => Creates a range of numbers
 * partition = (a: any[], size: number) => Partitions an array into segments of X size
 
+## Number Functions
+* secureRandomNumber = (min: number, max: number) => Generates a cryptographically secure number using the crypto NodeJS package.
+
 ## Date Functions
 * unixTimestamp = () => Returns the time in milliseconds since the Unix epoch (00:00:00 UTC on 1 January 1970)
 

@@ -114,6 +114,14 @@ const hasRepeatingSets = (s: string, ignoreCase: boolean = true, minRepeat: numb
 const getRepeatingCharacters = (s: string, ignoreCase: boolean = true, minRepeat: number = 2) => s.match(new RegExp(`(.)\\1{${minRepeat},}`, ignoreCase ? 'gi' : 'g'))
 const hasRepeatingCharacters = (s: string, ignoreCase: boolean = true, minRepeat: number = 2) => new RegExp(`(.)\\1{${minRepeat},}`, ignoreCase ? 'gi' : 'g').test(s)
 
+const secureRandomNumber = (min: number, max: number) => {
+    const distance = max - min
+    const level = Math.ceil(Math.log(distance) / Math.log(256))
+    const num = parseInt(require('crypto').randomBytes(level).toString('hex'), 16)
+    const result = Math.floor(num / Math.pow(256, level) * (max - min + 1) + min)
+    return result
+}
+
 const keyToField = (s: string, strip?: string): string =>
     strip
     ? s.replace(new RegExp(`${strip}`, 'g'), '')
@@ -340,6 +348,7 @@ export class UnderscoreF {
                                       minRepeat: number = 2) => hasRepeatingSets(s, ignoreCase, minRepeat)
     public static getSequences = (s: string, ignoreCase?: boolean) => getSequences(s, ignoreCase)
     public static hasSequences = (s: string, ignoreCase?: boolean) => hasSequences(s, ignoreCase)
+    public static secureRandomNumber = (min: number, max: number) => secureRandomNumber(min, max)
 }
 
 export const _f = UnderscoreF

@@ -155,6 +155,13 @@ var hasRepeatingCharacters = function (s, ignoreCase, minRepeat) {
     if (minRepeat === void 0) { minRepeat = 2; }
     return new RegExp("(.)\\1{" + minRepeat + ",}", ignoreCase ? 'gi' : 'g').test(s);
 };
+var secureRandomNumber = function (min, max) {
+    var distance = max - min;
+    var level = Math.ceil(Math.log(distance) / Math.log(256));
+    var num = parseInt(require('crypto').randomBytes(level).toString('hex'), 16);
+    var result = Math.floor(num / Math.pow(256, level) * (max - min + 1) + min);
+    return result;
+};
 var keyToField = function (s, strip) {
     return strip
         ? s.replace(new RegExp("" + strip, 'g'), '')
@@ -414,6 +421,7 @@ var UnderscoreF = /** @class */ (function () {
     };
     UnderscoreF.getSequences = function (s, ignoreCase) { return getSequences(s, ignoreCase); };
     UnderscoreF.hasSequences = function (s, ignoreCase) { return hasSequences(s, ignoreCase); };
+    UnderscoreF.secureRandomNumber = function (min, max) { return secureRandomNumber(min, max); };
     return UnderscoreF;
 }());
 exports.UnderscoreF = UnderscoreF;
