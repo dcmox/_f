@@ -311,18 +311,18 @@ describe('_f test suite', () => {
             assert.deepEqual(_f.hasRepeatingSets(test.s), test.expected)
         })
     })
-    it('should detect repeating sequences in a string', () => {
+    it('should detect sequences in a string', () => {
         const tests: any = [
-            { s: '1234567', expected: ['123', '456'] },
+            { s: '1234567', expected: ['1234567'] },
             { s: 'abc def', expected: ['abc', 'def'] },
             { s: '321 fed', expected: ['321', 'fed'] },
-            { s: 'test', expected: null },
+            { s: 'test', expected: [] },
         ]
         tests.forEach((test: any) => {
-            assert.deepEqual(_f.getRepeatingSequences(test.s), test.expected)
+            assert.deepEqual(_f.getSequences(test.s), test.expected)
         })
     })
-    it('should detect if a string contains repeating sequences', () => {
+    it('should detect if a string contains sequences', () => {
         const tests: any = [
             { s: '1234567', expected: true },
             { s: 'abc def', expected: true },
@@ -330,7 +330,7 @@ describe('_f test suite', () => {
             { s: 'test', expected: false },
         ]
         tests.forEach((test: any) => {
-            assert.deepEqual(_f.hasRepeatingSequences(test.s), test.expected)
+            assert.deepEqual(_f.hasSequences(test.s), test.expected)
         })
     })
     it('should detect repeating characters in a string', () => {

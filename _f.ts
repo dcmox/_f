@@ -74,11 +74,38 @@ const randomString = (len: number = 10, charset: string = '!@#%=*_-~23456789abcd
 const isShouting = (s: string, threshold: number = 0.51) =>
     (s.match(/[A-Z]/g)?.length || 0) / s.length >= threshold && s.length > 5
 
-const getRepeatingSequences = (s: string, ignoreCase: boolean = true) => s.match(new RegExp (`(?:abc|bcd|cde|def|efg|fgh|ghi|hij|ijk|jkl|klm|lmn|mno|nop|opq|pqr|qrs|rst|stu|tuv|uvw|vwx|wxy|xyz`
-    + `|zyx|xyw|xwv|wvu|vut|uts|tsr|srq|rqp|qpo|pon|onm|nml|mlk|lkj|kji|jih|ihg|hgf|gfe|fed|edc|dcb|cba`
-    + `|012|123|234|345|456|567|678|789|890|098|987|876|765|654|543|432|321|210)`, ignoreCase ? 'gi' : 'g'))
+const getSequences = (s: string, ignoreCase: boolean = true) => {
+    const cmp: string = ignoreCase ? s.toLowerCase() : s
+    let i: number = 0
+    let sp: number = -1
+    let ep: number = -1
+    let dir: number = -1
+    const sequences: string[] = []
+    while (i < s.length) {
+        if (sp === -1) {
+            if (cmp.charCodeAt(i) === cmp.charCodeAt(i + 1) - 1) {
+                sp = i
+                dir = -1
+            } else if (cmp.charCodeAt(i) === cmp.charCodeAt(i + 1) + 1) {
+                sp = i
+                dir = 1
+            }
+        } else {
+            if (dir === -1 && cmp.charCodeAt(i) === cmp.charCodeAt(i + 1) - 1
+            || dir === 1 && cmp.charCodeAt(i) === cmp.charCodeAt(i + 1) + 1) {
+                ep = i + 2
+            } else {
+                if (sp !== -1 && ep !== -1) { sequences.push(s.slice(sp, ep)) }
+                sp = ep = -1
+            }
+        }
+        i++
+    }
 
-const hasRepeatingSequences = (s: string, ignoreCase: boolean = true) => new RegExp (`(?:abc|bcd|cde|def|efg|fgh|ghi|hij|ijk|jkl|klm|lmn|mno|nop|opq|pqr|qrs|rst|stu|tuv|uvw|vwx|wxy|xyz`
+    return sequences
+}
+
+const hasSequences = (s: string, ignoreCase: boolean = true) => new RegExp (`(?:abc|bcd|cde|def|efg|fgh|ghi|hij|ijk|jkl|klm|lmn|mno|nop|opq|pqr|qrs|rst|stu|tuv|uvw|vwx|wxy|xyz`
     + `|zyx|xyw|xwv|wvu|vut|uts|tsr|srq|rqp|qpo|pon|onm|nml|mlk|lkj|kji|jih|ihg|hgf|gfe|fed|edc|dcb|cba`
     + `|012|123|234|345|456|567|678|789|890|098|987|876|765|654|543|432|321|210)`, ignoreCase ? 'gi' : 'g').test(s)
 
@@ -311,8 +338,8 @@ export class UnderscoreF {
                                       minRepeat: number = 2) => getRepeatingSets(s, ignoreCase, minRepeat)
     public static hasRepeatingSets = (s: string, ignoreCase?: boolean,
                                       minRepeat: number = 2) => hasRepeatingSets(s, ignoreCase, minRepeat)
-    public static getRepeatingSequences = (s: string, ignoreCase?: boolean) => getRepeatingSequences(s, ignoreCase)
-    public static hasRepeatingSequences = (s: string, ignoreCase?: boolean) => hasRepeatingSequences(s, ignoreCase)
+    public static getSequences = (s: string, ignoreCase?: boolean) => getSequences(s, ignoreCase)
+    public static hasSequences = (s: string, ignoreCase?: boolean) => hasSequences(s, ignoreCase)
 }
 
 export const _f = UnderscoreF

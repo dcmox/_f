@@ -32,13 +32,13 @@ Moxy String and Array manipulation library for TypeScript / NodeJS. Array functi
 * uniqueId = (prefix?: string, postfix?: string) => Generates a unique ID
 * firstUniqueCharacter = (s: string) => Returns the first non-repeating character in a string
 * randomString = (len: number, charSet?: string) => Generates a random string of N length using an optionally defined character set.
-* isShouting = (s: string, optionalThreshold?: number) => Returns true if a sentence (more than 5 characters long) is detected as being SHOUTED OUT. Threshold is the percentage of uppercase text.
+* isShouting = (s: string, optionalThreshold?: number) => Returns true if a sentence (more than 5 characters long) is detected as being SHOUTED OUT. Threshold is the fractional percentage of uppercase text.
 * getRepeatingCharacters = (s: string, ignoreCase?: boolean, minRepeat: number = 2) => Get all repeating characters in a string
 * hasRepeatingCharacters = (s: string, ignoreCase?: boolean, minRepeat: number = 2) => Returns true if a string has repeating characters, `booo` = 2 repeated 'o' characters.
 * getRepeatingSets = (s: string, ignoreCase?: boolean, minRepeat: number = 2) => Get all repeating sets in a string
 * hasRepeatingSets = (s: string, ignoreCase?: boolean, minRepeat: number = 2) => Returns true if a string has repeating sets, `hellohellohello` = 2 repeated 'hello' sets.
-* getRepeatingSequences = (s: string, ignoreCase?: boolean) => Returns all repeating sequences (eg. 123, abc, 321) in a string
-* hasRepeatingSequences = (s: string, ignoreCase?: boolean) => Returns true if a string has characters or numbers in sequence or reverse sequence  (eg. 123, abc, 321)
+* getSequences = (s: string, ignoreCase?: boolean) => Returns all sequences (eg. 123, abc, 321) in a string
+* hasSequences = (s: string, ignoreCase?: boolean) => Returns true if a string has characters or numbers in sequence or reverse sequence  (eg. 123, abc, 321)
 
 ## Array Functions
 * compact = (a: any[]) => Removes values that are falsey

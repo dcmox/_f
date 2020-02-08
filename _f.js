@@ -94,13 +94,42 @@ var isShouting = function (s, threshold) {
     var _a;
     return (((_a = s.match(/[A-Z]/g)) === null || _a === void 0 ? void 0 : _a.length) || 0) / s.length >= threshold && s.length > 5;
 };
-var getRepeatingSequences = function (s, ignoreCase) {
+var getSequences = function (s, ignoreCase) {
     if (ignoreCase === void 0) { ignoreCase = true; }
-    return s.match(new RegExp("(?:abc|bcd|cde|def|efg|fgh|ghi|hij|ijk|jkl|klm|lmn|mno|nop|opq|pqr|qrs|rst|stu|tuv|uvw|vwx|wxy|xyz"
-        + "|zyx|xyw|xwv|wvu|vut|uts|tsr|srq|rqp|qpo|pon|onm|nml|mlk|lkj|kji|jih|ihg|hgf|gfe|fed|edc|dcb|cba"
-        + "|012|123|234|345|456|567|678|789|890|098|987|876|765|654|543|432|321|210)", ignoreCase ? 'gi' : 'g'));
+    var cmp = ignoreCase ? s.toLowerCase() : s;
+    var i = 0;
+    var sp = -1;
+    var ep = -1;
+    var dir = -1;
+    var sequences = [];
+    while (i < s.length) {
+        if (sp === -1) {
+            if (cmp.charCodeAt(i) === cmp.charCodeAt(i + 1) - 1) {
+                sp = i;
+                dir = -1;
+            }
+            else if (cmp.charCodeAt(i) === cmp.charCodeAt(i + 1) + 1) {
+                sp = i;
+                dir = 1;
+            }
+        }
+        else {
+            if (dir === -1 && cmp.charCodeAt(i) === cmp.charCodeAt(i + 1) - 1
+                || dir === 1 && cmp.charCodeAt(i) === cmp.charCodeAt(i + 1) + 1) {
+                ep = i + 2;
+            }
+            else {
+                if (sp !== -1 && ep !== -1) {
+                    sequences.push(s.slice(sp, ep));
+                }
+                sp = ep = -1;
+            }
+        }
+        i++;
+    }
+    return sequences;
 };
-var hasRepeatingSequences = function (s, ignoreCase) {
+var hasSequences = function (s, ignoreCase) {
     if (ignoreCase === void 0) { ignoreCase = true; }
     return new RegExp("(?:abc|bcd|cde|def|efg|fgh|ghi|hij|ijk|jkl|klm|lmn|mno|nop|opq|pqr|qrs|rst|stu|tuv|uvw|vwx|wxy|xyz"
         + "|zyx|xyw|xwv|wvu|vut|uts|tsr|srq|rqp|qpo|pon|onm|nml|mlk|lkj|kji|jih|ihg|hgf|gfe|fed|edc|dcb|cba"
@@ -383,8 +412,8 @@ var UnderscoreF = /** @class */ (function () {
         if (minRepeat === void 0) { minRepeat = 2; }
         return hasRepeatingSets(s, ignoreCase, minRepeat);
     };
-    UnderscoreF.getRepeatingSequences = function (s, ignoreCase) { return getRepeatingSequences(s, ignoreCase); };
-    UnderscoreF.hasRepeatingSequences = function (s, ignoreCase) { return hasRepeatingSequences(s, ignoreCase); };
+    UnderscoreF.getSequences = function (s, ignoreCase) { return getSequences(s, ignoreCase); };
+    UnderscoreF.hasSequences = function (s, ignoreCase) { return hasSequences(s, ignoreCase); };
     return UnderscoreF;
 }());
 exports.UnderscoreF = UnderscoreF;
