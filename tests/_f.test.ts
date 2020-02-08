@@ -289,6 +289,26 @@ describe('_f test suite', () => {
             assert.deepEqual(_f.isShouting(test.s), test.expected)
         })
     })
+    it('should detect repeating characters in a string', () => {
+        const tests: any = [
+            { s: 'testingggg', expected: ['gggg'] },
+            { s: 'boooo that is grosss!', expected: ['oooo', 'sss'] },
+            { s: 'SHOUT OUT!', expected: null },
+        ]
+        tests.forEach((test: any) => {
+            assert.deepEqual(_f.getRepeatingCharacters(test.s), test.expected)
+        })
+    })
+    it('should detect if a string contains repeating characters', () => {
+        const tests: any = [
+            { s: 'testingggg', expected: true },
+            { s: 'boooo that is grosss!', expected: true },
+            { s: 'SHOUT OUT!', expected: false },
+        ]
+        tests.forEach((test: any) => {
+            assert.deepEqual(_f.hasRepeatingCharacters(test.s), test.expected)
+        })
+    })
     it('should compact an array', () => {
         assert.deepEqual(_f.compact([1, 2, null, false, 3, 4, undefined, 5]), [1, 2, 3, 4, 5])
     })

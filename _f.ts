@@ -74,6 +74,16 @@ const randomString = (len: number = 10, charset: string = '!@#%=*_-~23456789abcd
 const isShouting = (s: string, threshold: number = 0.51) =>
     (s.match(/[A-Z]/g)?.length || 0) / s.length >= threshold && s.length > 5
 
+const getRepeatingCharacters = (s: string, ignoreCase: boolean = true, minRepeat: number = 2) =>
+    ignoreCase
+    ? s.match(new RegExp(`(.)\\1{${minRepeat},}`, 'gi'))
+    : s.match(new RegExp(`(.)\\1{${minRepeat},}`, 'g'))
+
+const hasRepeatingCharacters = (s: string, ignoreCase: boolean = true, minRepeat: number = 2) =>
+    ignoreCase
+    ? new RegExp(`(.)\\1{${minRepeat},}`, 'gi').test(s)
+    : new RegExp(`(.)\\1{${minRepeat},}`, 'g').test(s)
+
 const keyToField = (s: string, strip?: string): string =>
     strip
     ? s.replace(new RegExp(`${strip}`, 'g'), '')
@@ -290,6 +300,10 @@ export class UnderscoreF {
     public static firstUniqueCharacter = (s: string) => firstUniqueCharacter(s)
     public static randomString = (len: number, charSet?: string) => randomString(len, charSet)
     public static isShouting = (s: string, threshold: number = 0.51) => isShouting(s, threshold)
+    public static getRepeatingCharacters = (s: string, ignoreCase?: boolean,
+                                            minRepeat: number = 2) => getRepeatingCharacters(s, ignoreCase, minRepeat)
+    public static hasRepeatingCharacters = (s: string, ignoreCase?: boolean,
+                                            minRepeat: number = 2) => hasRepeatingCharacters(s, ignoreCase, minRepeat)
 }
 
 export const _f = UnderscoreF

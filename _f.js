@@ -94,6 +94,20 @@ var isShouting = function (s, threshold) {
     var _a;
     return (((_a = s.match(/[A-Z]/g)) === null || _a === void 0 ? void 0 : _a.length) || 0) / s.length >= threshold && s.length > 5;
 };
+var getRepeatingCharacters = function (s, ignoreCase, minRepeat) {
+    if (ignoreCase === void 0) { ignoreCase = true; }
+    if (minRepeat === void 0) { minRepeat = 2; }
+    return ignoreCase
+        ? s.match(new RegExp("(.)\\1{" + minRepeat + ",}", 'gi'))
+        : s.match(new RegExp("(.)\\1{" + minRepeat + ",}", 'g'));
+};
+var hasRepeatingCharacters = function (s, ignoreCase, minRepeat) {
+    if (ignoreCase === void 0) { ignoreCase = true; }
+    if (minRepeat === void 0) { minRepeat = 2; }
+    return ignoreCase
+        ? new RegExp("(.)\\1{" + minRepeat + ",}", 'gi').test(s)
+        : new RegExp("(.)\\1{" + minRepeat + ",}", 'g').test(s);
+};
 var keyToField = function (s, strip) {
     return strip
         ? s.replace(new RegExp("" + strip, 'g'), '')
@@ -334,6 +348,14 @@ var UnderscoreF = /** @class */ (function () {
     UnderscoreF.isShouting = function (s, threshold) {
         if (threshold === void 0) { threshold = 0.51; }
         return isShouting(s, threshold);
+    };
+    UnderscoreF.getRepeatingCharacters = function (s, ignoreCase, minRepeat) {
+        if (minRepeat === void 0) { minRepeat = 2; }
+        return getRepeatingCharacters(s, ignoreCase, minRepeat);
+    };
+    UnderscoreF.hasRepeatingCharacters = function (s, ignoreCase, minRepeat) {
+        if (minRepeat === void 0) { minRepeat = 2; }
+        return hasRepeatingCharacters(s, ignoreCase, minRepeat);
     };
     return UnderscoreF;
 }());
