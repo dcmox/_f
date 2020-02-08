@@ -35,8 +35,8 @@ Moxy String and Array manipulation library for TypeScript / NodeJS. Array functi
 * isShouting = (s: string, optionalThreshold?: number) => Returns true if a sentence (more than 5 characters long) is detected as being SHOUTED OUT. Threshold is the percentage of uppercase text.
 * getRepeatingCharacters = (s: string, ignoreCase?: boolean, minRepeat: number = 2) => Get all repeating characters in a string
 * hasRepeatingCharacters = (s: string, ignoreCase?: boolean, minRepeat: number = 2) => Returns true if a string has repeating characters, `booo` = 2 repeated 'o' characters.
-* getRepeatingSequences = (s: string, ignoreCase?: boolean, minRepeat: number = 2) => Get all repeating sequences in a string
-* hasRepeatingSequences = (s: string, ignoreCase?: boolean, minRepeat: number = 2) => Returns true if a string has repeating sequences, `hellohellohello` = 2 repeated 'hello' sequences.
+* getRepeatingSets = (s: string, ignoreCase?: boolean, minRepeat: number = 2) => Get all repeating sets in a string
+* hasRepeatingSets = (s: string, ignoreCase?: boolean, minRepeat: number = 2) => Returns true if a string has repeating sets, `hellohellohello` = 2 repeated 'hello' sets.
 
 ## Array Functions
 * compact = (a: any[]) => Removes values that are falsey

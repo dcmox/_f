@@ -94,14 +94,14 @@ var isShouting = function (s, threshold) {
     var _a;
     return (((_a = s.match(/[A-Z]/g)) === null || _a === void 0 ? void 0 : _a.length) || 0) / s.length >= threshold && s.length > 5;
 };
-var getRepeatingSequences = function (s, ignoreCase, minRepeat) {
+var getRepeatingSets = function (s, ignoreCase, minRepeat) {
     if (ignoreCase === void 0) { ignoreCase = true; }
     if (minRepeat === void 0) { minRepeat = 2; }
     return ignoreCase
         ? s.match(new RegExp("(.+)\\1{" + minRepeat + ",}", 'gi'))
         : s.match(new RegExp("(.+)\\1{" + minRepeat + ",}", 'g'));
 };
-var hasRepeatingSequences = function (s, ignoreCase, minRepeat) {
+var hasRepeatingSets = function (s, ignoreCase, minRepeat) {
     if (ignoreCase === void 0) { ignoreCase = true; }
     if (minRepeat === void 0) { minRepeat = 2; }
     return ignoreCase
@@ -371,13 +371,13 @@ var UnderscoreF = /** @class */ (function () {
         if (minRepeat === void 0) { minRepeat = 2; }
         return hasRepeatingCharacters(s, ignoreCase, minRepeat);
     };
-    UnderscoreF.getRepeatingSequences = function (s, ignoreCase, minRepeat) {
+    UnderscoreF.getRepeatingSets = function (s, ignoreCase, minRepeat) {
         if (minRepeat === void 0) { minRepeat = 2; }
-        return getRepeatingSequences(s, ignoreCase, minRepeat);
+        return getRepeatingSets(s, ignoreCase, minRepeat);
     };
-    UnderscoreF.hasRepeatingSequences = function (s, ignoreCase, minRepeat) {
+    UnderscoreF.hasRepeatingSets = function (s, ignoreCase, minRepeat) {
         if (minRepeat === void 0) { minRepeat = 2; }
-        return hasRepeatingSequences(s, ignoreCase, minRepeat);
+        return hasRepeatingSets(s, ignoreCase, minRepeat);
     };
     return UnderscoreF;
 }());
