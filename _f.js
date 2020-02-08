@@ -371,6 +371,14 @@ var UnderscoreF = /** @class */ (function () {
         if (minRepeat === void 0) { minRepeat = 2; }
         return hasRepeatingCharacters(s, ignoreCase, minRepeat);
     };
+    UnderscoreF.getRepeatingSequences = function (s, ignoreCase, minRepeat) {
+        if (minRepeat === void 0) { minRepeat = 2; }
+        return getRepeatingSequences(s, ignoreCase, minRepeat);
+    };
+    UnderscoreF.hasRepeatingSequences = function (s, ignoreCase, minRepeat) {
+        if (minRepeat === void 0) { minRepeat = 2; }
+        return hasRepeatingSequences(s, ignoreCase, minRepeat);
+    };
     return UnderscoreF;
 }());
 exports.UnderscoreF = UnderscoreF;

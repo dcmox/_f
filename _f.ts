@@ -314,6 +314,10 @@ export class UnderscoreF {
                                             minRepeat: number = 2) => getRepeatingCharacters(s, ignoreCase, minRepeat)
     public static hasRepeatingCharacters = (s: string, ignoreCase?: boolean,
                                             minRepeat: number = 2) => hasRepeatingCharacters(s, ignoreCase, minRepeat)
+    public static getRepeatingSequences = (s: string, ignoreCase?: boolean,
+                                           minRepeat: number = 2) => getRepeatingSequences(s, ignoreCase, minRepeat)
+    public static hasRepeatingSequences = (s: string, ignoreCase?: boolean,
+                                           minRepeat: number = 2) => hasRepeatingSequences(s, ignoreCase, minRepeat)
 }
 
 export const _f = UnderscoreF
