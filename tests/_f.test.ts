@@ -251,6 +251,15 @@ describe('_f test suite', () => {
             assert.equal(_f.reverseWords(test.s), test.expected)
         })
     })
+    it('should find the first unique character in a string', () => {
+        const tests: any = [
+            { s: 'aaabbcdc', expected: 'd'},
+            { s: 'abacadbcdeff', expected: 'e' },
+        ]
+        tests.forEach((test: any) => {
+            assert.equal(_f.firstUniqueCharacter(test.s), test.expected)
+        })
+    })
     it('should convert a string path to an array', () => {
         const tests: any = [
             { s: 'a[1].b.c', expected: ['a', '1', 'b', 'c'] },

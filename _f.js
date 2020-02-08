@@ -83,6 +83,12 @@ var excerpt = function (s, len) {
 var reverse = function (s) { return s.split('').reverse().join(''); };
 var reverseWords = function (s) { return s.split(' ').reverse().join(' '); };
 var toPath = function (s) { return s.replace(/\[|\]/g, '.').split('.').filter(function (n) { return n; }); };
+var firstUniqueCharacter = function (s) { return s.split('').find(function (c) { return s.indexOf(c) === s.lastIndexOf(c); }) || ''; };
+var randomString = function (len, charset) {
+    if (len === void 0) { len = 10; }
+    if (charset === void 0) { charset = '!@#%=*_-~23456789abcdefghijkmnopqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ'; }
+    return Array.from({ length: len }, function (c) { return charset.charAt(Math.floor(Math.random() * charset.length)); }).join('');
+};
 var keyToField = function (s, strip) {
     return strip
         ? s.replace(new RegExp("" + strip, 'g'), '')
@@ -318,6 +324,8 @@ var UnderscoreF = /** @class */ (function () {
     UnderscoreF.unixTimestamp = function () { return unixTimestamp(); };
     UnderscoreF.uniqueId = function (prefix, postfix) { return uniqueId(prefix, postfix); };
     UnderscoreF.partition = function (a, size) { return partition(a, size); };
+    UnderscoreF.firstUniqueCharacter = function (s) { return firstUniqueCharacter(s); };
+    UnderscoreF.randomString = function (len, charSet) { return randomString(len, charSet); };
     return UnderscoreF;
 }());
 exports.UnderscoreF = UnderscoreF;

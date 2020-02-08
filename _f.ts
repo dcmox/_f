@@ -68,6 +68,9 @@ const excerpt = (s: string, len: number = 255): string =>
 const reverse = (s: string): string => s.split('').reverse().join('')
 const reverseWords = (s: string): string => s.split(' ').reverse().join(' ')
 const toPath = (s: string): string[] => s.replace(/\[|\]/g, '.').split('.').filter((n: string) => n)
+const firstUniqueCharacter = (s: string): string => s.split('').find((c) => s.indexOf(c) === s.lastIndexOf(c)) || ''
+const randomString = (len: number = 10, charset: string = '!@#%=*_-~23456789abcdefghijkmnopqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ'): string =>
+    Array.from({length: len}, (c: any) => charset.charAt(Math.floor(Math.random() * charset.length))).join('')
 const keyToField = (s: string, strip?: string): string =>
     strip
     ? s.replace(new RegExp(`${strip}`, 'g'), '')
@@ -203,7 +206,7 @@ const isAlphaNumeric = (s: string, ignoreChars?: string) =>
 
 const range = (s: number, e?: number, m?: number) =>
     e && m
-    ? Array.from({length: Math.ceil((e - s) / m)}, (x: any, i: number) => (i * m) + s )
+    ? Array.from({length: Math.ceil((e - s) / m)}, (x: any, i: number) => (i * m) + s)
     : e
     ? Array.from({length: e - s}, (x: any, i: number) => i + s)
     : Array.from({length: s}, (x: any, i: number) => i)
@@ -281,6 +284,8 @@ export class UnderscoreF {
     public static unixTimestamp = () => unixTimestamp()
     public static uniqueId = (prefix?: string, postfix?: string) => uniqueId(prefix, postfix)
     public static partition = (a: any[], size: number) => partition(a, size)
+    public static firstUniqueCharacter = (s: string) => firstUniqueCharacter(s)
+    public static randomString = (len: number, charSet?: string) => randomString(len, charSet)
 }
 
 export const _f = UnderscoreF
