@@ -74,6 +74,16 @@ const randomString = (len: number = 10, charset: string = '!@#%=*_-~23456789abcd
 const isShouting = (s: string, threshold: number = 0.51) =>
     (s.match(/[A-Z]/g)?.length || 0) / s.length >= threshold && s.length > 5
 
+const getRepeatingSequences = (s: string, ignoreCase: boolean = true, minRepeat: number = 2) =>
+    ignoreCase
+    ? s.match(new RegExp(`(.)\\1{${minRepeat},}`, 'gi'))
+    : s.match(new RegExp(`(.)\\1{${minRepeat},}`, 'g'))
+
+const hasRepeatingSequences = (s: string, ignoreCase: boolean = true, minRepeat: number = 2) =>
+    ignoreCase
+    ? new RegExp(`(.+)\\1{${minRepeat},}`, 'gi').test(s)
+    : new RegExp(`(.+)\\1{${minRepeat},}`, 'g').test(s)
+
 const getRepeatingCharacters = (s: string, ignoreCase: boolean = true, minRepeat: number = 2) =>
     ignoreCase
     ? s.match(new RegExp(`(.)\\1{${minRepeat},}`, 'gi'))

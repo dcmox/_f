@@ -94,6 +94,20 @@ var isShouting = function (s, threshold) {
     var _a;
     return (((_a = s.match(/[A-Z]/g)) === null || _a === void 0 ? void 0 : _a.length) || 0) / s.length >= threshold && s.length > 5;
 };
+var getRepeatingSequences = function (s, ignoreCase, minRepeat) {
+    if (ignoreCase === void 0) { ignoreCase = true; }
+    if (minRepeat === void 0) { minRepeat = 2; }
+    return ignoreCase
+        ? s.match(new RegExp("(.)\\1{" + minRepeat + ",}", 'gi'))
+        : s.match(new RegExp("(.)\\1{" + minRepeat + ",}", 'g'));
+};
+var hasRepeatingSequences = function (s, ignoreCase, minRepeat) {
+    if (ignoreCase === void 0) { ignoreCase = true; }
+    if (minRepeat === void 0) { minRepeat = 2; }
+    return ignoreCase
+        ? new RegExp("(.+)\\1{" + minRepeat + ",}", 'gi').test(s)
+        : new RegExp("(.+)\\1{" + minRepeat + ",}", 'g').test(s);
+};
 var getRepeatingCharacters = function (s, ignoreCase, minRepeat) {
     if (ignoreCase === void 0) { ignoreCase = true; }
     if (minRepeat === void 0) { minRepeat = 2; }

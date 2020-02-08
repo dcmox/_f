@@ -289,6 +289,28 @@ describe('_f test suite', () => {
             assert.deepEqual(_f.isShouting(test.s), test.expected)
         })
     })
+    it('should detect repeating sequences in a string', () => {
+        const tests: any = [
+            { s: 'abcabcabc', expected: ['abcabcabc'] },
+            { s: 'ararbarbarbar', expected: ['barbarbar'] },
+            { s: 'jello mello fello hello hello hello', expected: ['hello hello hello'] },
+            { s: 'test', expected: null },
+        ]
+        tests.forEach((test: any) => {
+            assert.deepEqual(_f.getRepeatingSequences(test.s), test.expected)
+        })
+    })
+    it('should detect if a string contains repeating sequences', () => {
+        const tests: any = [
+            { s: 'abcabcabc', expected: true },
+            { s: 'ararbarbarbar', expected: true },
+            { s: 'jello mello fello hello hello hello', expected: true },
+            { s: 'test', expected: false },
+        ]
+        tests.forEach((test: any) => {
+            assert.deepEqual(_f.hasRepeatingSequences(test.s), test.expected)
+        })
+    })
     it('should detect repeating characters in a string', () => {
         const tests: any = [
             { s: 'testingggg', expected: ['gggg'] },
