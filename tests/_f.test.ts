@@ -293,7 +293,7 @@ describe('_f test suite', () => {
         const tests: any = [
             { s: 'abcabcabc', expected: ['abcabcabc'] },
             { s: 'ararbarbarbar', expected: ['arbarbarb'] },
-            { s: 'jello mello fello hello hello hello', expected: ['hello hello hello'] },
+            { s: 'jello mello fello hellohellohello', expected: ['hellohellohello'] },
             { s: 'test', expected: null },
         ]
         tests.forEach((test: any) => {
