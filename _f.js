@@ -1,68 +1,130 @@
-"use strict";
-exports.__esModule = true;
 // tslint:disable: object-literal-sort-keys
 var HTML_CHAR_MAP = {
     '&': '&amp;',
     '<': '&lt;',
     '>': '&gt;',
     '"': '&quot;',
-    '\'': '&#039;',
+    "'": '&#039;',
     '`': '&#x60;'
 };
 var REGEX_HTML_CHARS = /[&<>"']/g;
-var pascalCase = function (s) { return s.replace(/_/g, ' ').split(' ').map(function (s) {
-    return s.charAt(0).toUpperCase() + s.slice(1);
-}).join(''); };
-var camelCase = function (s) { return s.replace(/_/g, ' ').split(' ').map(function (s, i) {
-    return i === 0 ? s : s.charAt(0).toUpperCase() + s.slice(1);
-}).join(''); };
+var pascalCase = function (s) {
+    return s
+        .replace(/_/g, ' ')
+        .split(' ')
+        .map(function (s) { return s.charAt(0).toUpperCase() + s.slice(1); })
+        .join('');
+};
+var camelCase = function (s) {
+    return s
+        .replace(/_/g, ' ')
+        .split(' ')
+        .map(function (s, i) {
+        return i === 0 ? s : s.charAt(0).toUpperCase() + s.slice(1);
+    })
+        .join('');
+};
 var nl2br = function (s) { return s.replace(/\n/g, '<br />'); };
 var br2nl = function (s) { return s.replace(/(<br([ ]*)?>|<br([ ]*)?\/>)/gi, '\n'); };
-var splitByLength = function (s, len) { return s.match(new RegExp(".{" + len + "}", 'g')) || [s]; };
-var upperCaseWords = function (s) { return s.split(' ').map(function (w) {
-    return w.charAt(0).toUpperCase() + w.slice(1);
-}).join(' '); };
+var splitByLength = function (s, len) {
+    return s.match(new RegExp(".{" + len + "}", 'g')) || [s];
+};
+var upperCaseWords = function (s) {
+    return s
+        .split(' ')
+        .map(function (w) { return w.charAt(0).toUpperCase() + w.slice(1); })
+        .join(' ');
+};
 var upperCaseFirst = function (s) { return s.charAt(0).toUpperCase() + s.slice(1); };
 var upperCaseFirstInSentence = function (s) {
     return s.indexOf('.') === -1 && s.indexOf('?') === -1 && s.indexOf('!') === -1
         ? s.charAt(0).toUpperCase() + s.slice(1)
-        : s.replace(/(\.|\?|\!)  /g, function (str) { return str.trim() + ' '; })
-            .split('.').map(function (sentence) { return sentence.charAt(0) === ' '
-            ? ' ' + sentence.charAt(1).toUpperCase() + sentence.slice(2)
-            : sentence.charAt(0).toUpperCase() + sentence.slice(1); }).join('.')
-            .split('?').map(function (sentence) { return sentence.charAt(0) === ' '
-            ? ' ' + sentence.charAt(1).toUpperCase() + sentence.slice(2)
-            : sentence.charAt(0).toUpperCase() + sentence.slice(1); }).join('?')
-            .split('!').map(function (sentence) { return sentence.charAt(0) === ' '
-            ? ' ' + sentence.charAt(1).toUpperCase() + sentence.slice(2)
-            : sentence.charAt(0).toUpperCase() + sentence.slice(1); }).join('!');
+        : s
+            .replace(/(\.|\?|\!)  /g, function (str) { return str.trim() + ' '; })
+            .split('.')
+            .map(function (sentence) {
+            return sentence.charAt(0) === ' '
+                ? ' ' +
+                    sentence.charAt(1).toUpperCase() +
+                    sentence.slice(2)
+                : sentence.charAt(0).toUpperCase() + sentence.slice(1);
+        })
+            .join('.')
+            .split('?')
+            .map(function (sentence) {
+            return sentence.charAt(0) === ' '
+                ? ' ' +
+                    sentence.charAt(1).toUpperCase() +
+                    sentence.slice(2)
+                : sentence.charAt(0).toUpperCase() + sentence.slice(1);
+        })
+            .join('?')
+            .split('!')
+            .map(function (sentence) {
+            return sentence.charAt(0) === ' '
+                ? ' ' +
+                    sentence.charAt(1).toUpperCase() +
+                    sentence.slice(2)
+                : sentence.charAt(0).toUpperCase() + sentence.slice(1);
+        })
+            .join('!');
 };
 var decodeHTML = function (html) {
     return html.toString().replace(REGEX_HTML_CHARS, function (m) { return HTML_CHAR_MAP[m]; });
 };
 var toAlpha = function (s, charSet) {
     return charSet
-        ? s.replace(new RegExp("[^a-zA-Z" + charSet.split('').map(function (c) { return '\\' + c; }).join('') + "]", 'g'), '')
+        ? s.replace(new RegExp("[^a-zA-Z" + charSet
+            .split('')
+            .map(function (c) { return '\\' + c; })
+            .join('') + "]", 'g'), '')
         : s.replace(/[^a-zA-Z]/g, '');
 };
 var toNumeric = function (s, charSet) {
     return charSet
-        ? s.replace(new RegExp("[^0-9" + charSet.split('').map(function (c) { return '\\' + c; }).join('') + "]", 'g'), '')
+        ? s.replace(new RegExp("[^0-9" + charSet
+            .split('')
+            .map(function (c) { return '\\' + c; })
+            .join('') + "]", 'g'), '')
         : s.replace(/[^0-9]/g, '');
 };
-var toBinary = function (s) { return s.split('').map(function (c) { return c.charCodeAt(0).toString(2).padStart(8, '0'); }).join(''); };
-var toHex = function (s) { return s.split('').map(function (c) { return c.charCodeAt(0).toString(16); }).join(''); };
+var toBinary = function (s) {
+    return s
+        .split('')
+        .map(function (c) {
+        return c
+            .charCodeAt(0)
+            .toString(2)
+            .padStart(8, '0');
+    })
+        .join('');
+};
+var toHex = function (s) {
+    return s
+        .split('')
+        .map(function (c) { return c.charCodeAt(0).toString(16); })
+        .join('');
+};
 var fromHex = function (s) {
-    return splitByLength(s, 2).map(function (c) { return String.fromCharCode(parseInt(c, 16)); }).join('');
+    return splitByLength(s, 2)
+        .map(function (c) { return String.fromCharCode(parseInt(c, 16)); })
+        .join('');
 };
 var fromBinary = function (s) {
-    return splitByLength(s, 8).map(function (c) { return String.fromCharCode(parseInt(c, 2)); }).join('');
+    return splitByLength(s, 8)
+        .map(function (c) { return String.fromCharCode(parseInt(c, 2)); })
+        .join('');
 };
-var toBase64 = function (s) { return window ? btoa(s) : new Buffer(s).toString('base64'); };
-var fromBase64 = function (s) { return window ? atob(s) : new Buffer(s).toString('ascii'); };
+var toBase64 = function (s) {
+    return window ? btoa(s) : new Buffer(s).toString('base64');
+};
+var fromBase64 = function (s) {
+    return window ? atob(s) : new Buffer(s).toString('ascii');
+};
 var rightRotate = function (s, bits) {
     return bits > s.length
-        ? s.slice(s.length - (bits % s.length)) + s.slice(0, s.length - (bits % s.length))
+        ? s.slice(s.length - (bits % s.length)) +
+            s.slice(0, s.length - (bits % s.length))
         : s.slice(s.length - bits) + s.slice(0, s.length - bits);
 };
 var leftRotate = function (s, bits) {
@@ -78,16 +140,37 @@ var rightShift = function (s, bits, char) {
 };
 var excerpt = function (s, len) {
     if (len === void 0) { len = 255; }
-    return (s.length <= len ? s : s.slice(0, s.substring(0, len).lastIndexOf(' ')) + '...');
+    return s.length <= len
+        ? s
+        : s.slice(0, s.substring(0, len).lastIndexOf(' ')) + '...';
 };
-var reverse = function (s) { return s.split('').reverse().join(''); };
-var reverseWords = function (s) { return s.split(' ').reverse().join(' '); };
-var toPath = function (s) { return s.replace(/\[|\]/g, '.').split('.').filter(function (n) { return n; }); };
-var firstUniqueCharacter = function (s) { return s.split('').find(function (c) { return s.indexOf(c) === s.lastIndexOf(c); }) || ''; };
+var reverse = function (s) {
+    return s
+        .split('')
+        .reverse()
+        .join('');
+};
+var reverseWords = function (s) {
+    return s
+        .split(' ')
+        .reverse()
+        .join(' ');
+};
+var toPath = function (s) {
+    return s
+        .replace(/\[|\]/g, '.')
+        .split('.')
+        .filter(function (n) { return n; });
+};
+var firstUniqueCharacter = function (s) {
+    return s.split('').find(function (c) { return s.indexOf(c) === s.lastIndexOf(c); }) || '';
+};
 var randomString = function (len, charset) {
     if (len === void 0) { len = 10; }
     if (charset === void 0) { charset = '!@#%=*_-~23456789abcdefghijkmnopqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ'; }
-    return Array.from({ length: len }, function (c) { return charset.charAt(Math.floor(Math.random() * charset.length)); }).join('');
+    return Array.from({ length: len }, function (c) {
+        return charset.charAt(Math.floor(Math.random() * charset.length));
+    }).join('');
 };
 var isShouting = function (s, threshold) {
     if (threshold === void 0) { threshold = 0.51; }
@@ -114,8 +197,9 @@ var getSequences = function (s, ignoreCase) {
             }
         }
         else {
-            if (dir === -1 && cmp.charCodeAt(i) === cmp.charCodeAt(i + 1) - 1
-                || dir === 1 && cmp.charCodeAt(i) === cmp.charCodeAt(i + 1) + 1) {
+            if ((dir === -1 &&
+                cmp.charCodeAt(i) === cmp.charCodeAt(i + 1) - 1) ||
+                (dir === 1 && cmp.charCodeAt(i) === cmp.charCodeAt(i + 1) + 1)) {
                 ep = i + 2;
             }
             else {
@@ -131,9 +215,9 @@ var getSequences = function (s, ignoreCase) {
 };
 var hasSequences = function (s, ignoreCase) {
     if (ignoreCase === void 0) { ignoreCase = true; }
-    return new RegExp("(?:abc|bcd|cde|def|efg|fgh|ghi|hij|ijk|jkl|klm|lmn|mno|nop|opq|pqr|qrs|rst|stu|tuv|uvw|vwx|wxy|xyz"
-        + "|zyx|xyw|xwv|wvu|vut|uts|tsr|srq|rqp|qpo|pon|onm|nml|mlk|lkj|kji|jih|ihg|hgf|gfe|fed|edc|dcb|cba"
-        + "|012|123|234|345|456|567|678|789|890|098|987|876|765|654|543|432|321|210)", ignoreCase ? 'gi' : 'g').test(s);
+    return new RegExp("(?:abc|bcd|cde|def|efg|fgh|ghi|hij|ijk|jkl|klm|lmn|mno|nop|opq|pqr|qrs|rst|stu|tuv|uvw|vwx|wxy|xyz" +
+        "|zyx|xyw|xwv|wvu|vut|uts|tsr|srq|rqp|qpo|pon|onm|nml|mlk|lkj|kji|jih|ihg|hgf|gfe|fed|edc|dcb|cba" +
+        "|012|123|234|345|456|567|678|789|890|098|987|876|765|654|543|432|321|210)", ignoreCase ? 'gi' : 'g').test(s);
 };
 var getRepeatingSets = function (s, ignoreCase, minRepeat) {
     if (ignoreCase === void 0) { ignoreCase = true; }
@@ -158,19 +242,23 @@ var hasRepeatingCharacters = function (s, ignoreCase, minRepeat) {
 var secureRandomNumber = function (min, max) {
     var distance = max - min;
     var level = Math.ceil(Math.log(distance) / Math.log(256));
-    var num = parseInt(require('crypto').randomBytes(level).toString('hex'), 16);
-    var result = Math.floor(num / Math.pow(256, level) * (max - min + 1) + min);
+    var num = parseInt(require('crypto')
+        .randomBytes(level)
+        .toString('hex'), 16);
+    var result = Math.floor((num / Math.pow(256, level)) * (max - min + 1) + min);
     return result;
 };
 var keyToField = function (s, strip) {
     return strip
-        ? s.replace(new RegExp("" + strip, 'g'), '')
+        ? s
+            .replace(new RegExp("" + strip, 'g'), '')
             .replace(/\-|\_/g, ' ')
             .split(' ')
             .map(function (w) { return w.charAt(0).toUpperCase() + w.slice(1); })
             .join(' ')
             .trim()
-        : s.replace(/\-|\_/g, ' ')
+        : s
+            .replace(/\-|\_/g, ' ')
             .split(' ')
             .map(function (w) { return w.charAt(0).toUpperCase() + w.slice(1); })
             .join(' ')
@@ -213,14 +301,19 @@ var findLast = function (a, cond, byRef) {
         return temp[temp.length - 1];
     }
     else {
-        return a.slice().reverse().find(function (item) { return cond(item); });
+        return a
+            .slice()
+            .reverse()
+            .find(function (item) { return cond(item); });
     }
 };
 var unique = function (a, byRef) {
     if (byRef === void 0) { byRef = false; }
     return byRef
         ? a.filter(function (item, index) { return a.indexOf(item) === index; })
-        : a.slice().filter(function (item, index) { return a.indexOf(item) === index; });
+        : a
+            .slice()
+            .filter(function (item, index) { return a.indexOf(item) === index; });
 };
 var CONSTRUCTOR_TAGS = [
     '[object ArrayBuffer]',
@@ -246,7 +339,7 @@ var CONSTRUCTOR_TAGS = [
 var deepClone = function (src) {
     if (Array.isArray(src)) {
         if (src.some(function (e) { return Array.isArray(e); })) {
-            return src.map(function (e) { return Array.isArray(src) ? deepClone(e) : e; });
+            return src.map(function (e) { return (Array.isArray(src) ? deepClone(e) : e); });
         }
         else {
             return src.slice(0);
@@ -255,7 +348,8 @@ var deepClone = function (src) {
     if (typeof src !== 'object') {
         return src;
     }
-    if (typeof src === 'object' && CONSTRUCTOR_TAGS.includes(toString.call(src))) {
+    if (typeof src === 'object' &&
+        CONSTRUCTOR_TAGS.includes(toString.call(src))) {
         return new src.constructor(src);
     }
     return Object.keys(src).reduce(function (result, key) {
@@ -279,33 +373,53 @@ var deepClone = function (src) {
         return result;
     }, {}));
 };
-var flat = function (a) { return a.reduce(function (ret, v) { return ret.concat(Array.isArray(v) ? flat(v) : v); }, []); };
+var flat = function (a) {
+    return a.reduce(function (ret, v) { return ret.concat(Array.isArray(v) ? flat(v) : v); }, []);
+};
 var shuffle = function (a, byRef) {
     if (byRef === void 0) { byRef = false; }
     return typeof a === 'string'
-        ? a.split('').sort(function (a, b) { return Math.random() > Math.random() ? 1 : -1; }).join('')
+        ? a
+            .split('')
+            .sort(function (a, b) {
+            return Math.random() > Math.random() ? 1 : -1;
+        })
+            .join('')
         : byRef
-            ? a.sort(function (a, b) { return Math.random() > Math.random() ? 1 : -1; })
-            : a.slice().sort(function (a, b) { return Math.random() > Math.random() ? 1 : -1; });
+            ? a.sort(function (a, b) { return (Math.random() > Math.random() ? 1 : -1); })
+            : a
+                .slice()
+                .sort(function (a, b) {
+                return Math.random() > Math.random() ? 1 : -1;
+            });
 };
 var isNumeric = function (s, ignoreChars) {
     return ignoreChars
-        ? !s.toString().match(new RegExp("[^0-9" + ignoreChars.split('').map(function (c) { return '\\' + c; }).join('|') + "]", 'gi'))
+        ? !s.toString().match(new RegExp("[^0-9" + ignoreChars
+            .split('')
+            .map(function (c) { return '\\' + c; })
+            .join('|') + "]", 'gi'))
         : !s.toString().match(/[^0-9]/g);
 };
 var isAlpha = function (s, ignoreChars) {
     return ignoreChars
-        ? !s.toString().match(new RegExp("[^A-Z" + ignoreChars.split('').map(function (c) { return '\\' + c; }).join('|') + "]", 'gi'))
+        ? !s.toString().match(new RegExp("[^A-Z" + ignoreChars
+            .split('')
+            .map(function (c) { return '\\' + c; })
+            .join('|') + "]", 'gi'))
         : !s.toString().match(/[^A-Z]/gi);
 };
 var isAlphaNumeric = function (s, ignoreChars) {
     return ignoreChars
-        ? !s.toString().match(new RegExp("[^A-Z0-9" + ignoreChars.split('').map(function (c) { return '\\' + c; }).join('|') + "]", 'gi'))
+        ? !s.toString().match(new RegExp("[^A-Z0-9" + ignoreChars
+            .split('')
+            .map(function (c) { return '\\' + c; })
+            .join('|') + "]", 'gi'))
         : !s.toString().match(/[^A-Z0-9]/gi);
 };
 var range = function (s, e, m) {
     return e && m
-        ? Array.from({ length: Math.ceil((e - s) / m) }, function (x, i) { return (i * m) + s; })
+        ? Array.from({ length: Math.ceil((e - s) / m) }, function (x, i) { return i * m + s; })
         : e
             ? Array.from({ length: e - s }, function (x, i) { return i + s; })
             : Array.from({ length: s }, function (x, i) { return i; });
@@ -315,17 +429,17 @@ var partition = function (a, size) {
         acc[acc.length - 1]
             ? acc[acc.length - 1].length < size
                 ? acc[acc.length - 1].push(item)
-                : acc[acc.length] = [item]
-            : acc[acc.length] = [item];
+                : (acc[acc.length] = [item])
+            : (acc[acc.length] = [item]);
         return acc;
     }, []);
 };
 var unixTimestamp = function () { return new Date().valueOf(); };
 var uniqueId = function (prefix, postfix) {
-    return (prefix || '')
-        + (process && process.pid ? process.pid.toString(36) : '')
-        + Timestamp.get().toString(36)
-        + (postfix || '');
+    return ((prefix || '') +
+        (process && process.pid ? process.pid.toString(36) : '') +
+        Timestamp.get().toString(36) +
+        (postfix || ''));
 };
 var Timestamp = /** @class */ (function () {
     function Timestamp() {
@@ -333,97 +447,60 @@ var Timestamp = /** @class */ (function () {
     Timestamp.get = function () {
         this.time = new Date().valueOf();
         this.last = this.last || this.time;
-        return this.last = this.time > this.last ? this.time : this.last + 1;
+        return (this.last = this.time > this.last ? this.time : this.last + 1);
     };
     return Timestamp;
 }());
-// tslint:disable-next-line: max-classes-per-file
-var UnderscoreF = /** @class */ (function () {
-    function UnderscoreF() {
-    }
-    UnderscoreF.pascalCase = function (s) { return pascalCase(s); };
-    UnderscoreF.camelCase = function (s) { return camelCase(s); };
-    UnderscoreF.nl2br = function (s) { return nl2br(s); };
-    UnderscoreF.br2nl = function (s) { return br2nl(s); };
-    UnderscoreF.splitByLength = function (s, len) { return splitByLength(s, len); };
-    UnderscoreF.upperCaseWords = function (s) { return upperCaseWords(s); };
-    UnderscoreF.upperCaseFirst = function (s) { return upperCaseFirst(s); };
-    UnderscoreF.upperCaseFirstInSentence = function (s) { return upperCaseFirstInSentence(s); };
-    UnderscoreF.decodeHTML = function (html) { return decodeHTML(html); };
-    UnderscoreF.toAlpha = function (s, charSet) { return toAlpha(s, charSet); };
-    UnderscoreF.toNumeric = function (s, charSet) { return toNumeric(s, charSet); };
-    UnderscoreF.toBinary = function (s) { return toBinary(s); };
-    UnderscoreF.toHex = function (s) { return toHex(s); };
-    UnderscoreF.fromHex = function (s) { return fromHex(s); };
-    UnderscoreF.fromBinary = function (s) { return fromBinary(s); };
-    UnderscoreF.toBase64 = function (s) { return toBase64(s); };
-    UnderscoreF.fromBase64 = function (s) { return fromBase64(s); };
-    UnderscoreF.rightRotate = function (s, bits) { return rightRotate(s, bits); };
-    UnderscoreF.leftRotate = function (s, bits) { return leftRotate(s, bits); };
-    UnderscoreF.rightShift = function (s, bits, char) {
-        if (char === void 0) { char = '0'; }
-        return rightShift(s, bits, char);
-    };
-    UnderscoreF.excerpt = function (s, len) { return excerpt(s, len); };
-    UnderscoreF.reverse = function (s) { return reverse(s); };
-    UnderscoreF.reverseWords = function (s) { return reverseWords(s); };
-    UnderscoreF.toPath = function (s) { return toPath(s); };
-    UnderscoreF.keyToField = function (s, strip) { return keyToField(s, strip); };
-    UnderscoreF.compact = function (a) { return compact(a); };
-    UnderscoreF.first = function (a, byRef) {
-        if (byRef === void 0) { byRef = false; }
-        return first(a, byRef);
-    };
-    UnderscoreF.last = function (a, byRef) {
-        if (byRef === void 0) { byRef = false; }
-        return last(a, byRef);
-    };
-    UnderscoreF.findFirst = function (a, cond, byRef) {
-        if (byRef === void 0) { byRef = false; }
-        return findFirst(a, cond, byRef);
-    };
-    UnderscoreF.findLast = function (a, cond, byRef) {
-        if (byRef === void 0) { byRef = false; }
-        return findLast(a, cond, byRef);
-    };
-    UnderscoreF.unique = function (a) { return unique(a); };
-    UnderscoreF.deepClone = function (a) { return deepClone(a); };
-    UnderscoreF.flat = function (a) { return flat(a); };
-    UnderscoreF.shuffle = function (a) { return shuffle(a); };
-    UnderscoreF.isAlpha = function (s, ignoreChars) { return isAlpha(s, ignoreChars); };
-    UnderscoreF.isNumeric = function (s, ignoreChars) { return isNumeric(s, ignoreChars); };
-    UnderscoreF.isAlphaNumeric = function (s, ignoreChars) { return isAlphaNumeric(s, ignoreChars); };
-    UnderscoreF.range = function (start, end, multiplier) { return range(start, end, multiplier); };
-    UnderscoreF.unixTimestamp = function () { return unixTimestamp(); };
-    UnderscoreF.uniqueId = function (prefix, postfix) { return uniqueId(prefix, postfix); };
-    UnderscoreF.partition = function (a, size) { return partition(a, size); };
-    UnderscoreF.firstUniqueCharacter = function (s) { return firstUniqueCharacter(s); };
-    UnderscoreF.randomString = function (len, charSet) { return randomString(len, charSet); };
-    UnderscoreF.isShouting = function (s, threshold) {
-        if (threshold === void 0) { threshold = 0.51; }
-        return isShouting(s, threshold);
-    };
-    UnderscoreF.getRepeatingCharacters = function (s, ignoreCase, minRepeat) {
-        if (minRepeat === void 0) { minRepeat = 2; }
-        return getRepeatingCharacters(s, ignoreCase, minRepeat);
-    };
-    UnderscoreF.hasRepeatingCharacters = function (s, ignoreCase, minRepeat) {
-        if (minRepeat === void 0) { minRepeat = 2; }
-        return hasRepeatingCharacters(s, ignoreCase, minRepeat);
-    };
-    UnderscoreF.getRepeatingSets = function (s, ignoreCase, minRepeat) {
-        if (minRepeat === void 0) { minRepeat = 2; }
-        return getRepeatingSets(s, ignoreCase, minRepeat);
-    };
-    UnderscoreF.hasRepeatingSets = function (s, ignoreCase, minRepeat) {
-        if (minRepeat === void 0) { minRepeat = 2; }
-        return hasRepeatingSets(s, ignoreCase, minRepeat);
-    };
-    UnderscoreF.getSequences = function (s, ignoreCase) { return getSequences(s, ignoreCase); };
-    UnderscoreF.hasSequences = function (s, ignoreCase) { return hasSequences(s, ignoreCase); };
-    UnderscoreF.secureRandomNumber = function (min, max) { return secureRandomNumber(min, max); };
-    return UnderscoreF;
-}());
-exports.UnderscoreF = UnderscoreF;
-exports._f = UnderscoreF;
-exports["default"] = exports._f;
+module.exports = {
+    pascalCase: pascalCase,
+    camelCase: camelCase,
+    nl2br: nl2br,
+    br2nl: br2nl,
+    splitByLength: splitByLength,
+    upperCaseWords: upperCaseWords,
+    upperCaseFirst: upperCaseFirst,
+    upperCaseFirstInSentence: upperCaseFirstInSentence,
+    decodeHTML: decodeHTML,
+    toAlpha: toAlpha,
+    toNumeric: toNumeric,
+    toBinary: toBinary,
+    toHex: toHex,
+    fromHex: fromHex,
+    fromBinary: fromBinary,
+    toBase64: toBase64,
+    fromBase64: fromBase64,
+    rightRotate: rightRotate,
+    leftRotate: leftRotate,
+    rightShift: rightShift,
+    excerpt: excerpt,
+    reverse: reverse,
+    reverseWords: reverseWords,
+    toPath: toPath,
+    keyToField: keyToField,
+    compact: compact,
+    first: first,
+    last: last,
+    findFirst: findFirst,
+    findLast: findLast,
+    unique: unique,
+    deepClone: deepClone,
+    flat: flat,
+    shuffle: shuffle,
+    isAlpha: isAlpha,
+    isNumeric: isNumeric,
+    isAlphaNumeric: isAlphaNumeric,
+    range: range,
+    unixTimestamp: unixTimestamp,
+    uniqueId: uniqueId,
+    partition: partition,
+    randomString: randomString,
+    isShouting: isShouting,
+    firstUniqueCharacter: firstUniqueCharacter,
+    getRepeatingCharacters: getRepeatingCharacters,
+    hasRepeatingCharacters: hasRepeatingCharacters,
+    getRepeatingSets: getRepeatingSets,
+    hasRepeatingSets: hasRepeatingSets,
+    getSequences: getSequences,
+    hasSequences: hasSequences,
+    secureRandomNumber: secureRandomNumber
+};

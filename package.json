@@ -1,44 +1,44 @@
 {
-  "name": "underscore-functions",
-  "version": "0.6.5",
-  "private": false,
-  "description": "String and array manipulation functions",
-  "main": "_f.js",
-  "engines": {
-    "node": ">=4.0.0"
-  },
-  "devDependencies": {
-    "typescript": "3.7.2",
-    "@types/jest": "^24.0.24",
-    "@types/sinon": "^7.5.1",
-    "chai": "^4.2.0",
-    "jest": "^24.9.0",
-    "sinon": "^7.5.0",
-    "ts-jest": "^24.2.0",
-    "tslint": "^5.20.1"
-  },
-  "scripts": {
-    "test": "jest tests/*",
-    "build": "npm run build:main",
-    "build:main": "tsc _f.ts",
-    "watch": "tsc -w _f.ts",
-    "testb": "node _f.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dcmox/_f.git"
-  },
-  "keywords": [
-    "underscore f",
-    "underscore functions",
-    "string manipulation",
-    "array functions",
-    "moxy"
-  ],
-  "author": "Daniel Moxon (dancmox@comcast.net)",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/dcmox/_f/issues"
-  },
-  "homepage": "https://github.com/dcmox/_f#readme"
+	"name": "underscore-functions",
+	"version": "0.6.7",
+	"private": false,
+	"description": "String and array manipulation functions",
+	"main": "_f.js",
+	"engines": {
+		"node": ">=4.0.0"
+	},
+	"devDependencies": {
+		"typescript": "3.7.2",
+		"@types/jest": "^24.0.24",
+		"@types/sinon": "^7.5.1",
+		"chai": "^4.2.0",
+		"jest": "^24.9.0",
+		"sinon": "^7.5.0",
+		"ts-jest": "^24.2.0",
+		"tslint": "^5.20.1"
+	},
+	"scripts": {
+		"test": "jest tests/*",
+		"build": "npm run build:main",
+		"build:main": "tsc _f.ts",
+		"watch": "tsc -w _f.ts",
+		"testb": "node _f.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/dcmox/_f.git"
+	},
+	"keywords": [
+		"underscore f",
+		"underscore functions",
+		"string manipulation",
+		"array functions",
+		"moxy"
+	],
+	"author": "Daniel Moxon (dancmox@comcast.net)",
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/dcmox/_f/issues"
+	},
+	"homepage": "https://github.com/dcmox/_f#readme"
 }
