@@ -377,6 +377,31 @@ describe('_f test suite', () => {
 			assert.deepEqual(_f.hasRepeatingCharacters(test.s), test.expected)
 		})
 	})
+	describe('levenshtein test suite', () => {
+		it('should calculate the distances between strings correctly', () => {
+			assert.equal(_f.levenshtein('test', 'test'), 0)
+			assert.equal(_f.levenshtein('', 'test'), 4)
+			assert.equal(_f.levenshtein('test', ''), 4)
+			assert.equal(_f.levenshtein('test', 'testing'), 3)
+			assert.equal(_f.levenshtein('abc', 'def'), 3)
+			assert.equal(_f.levenshtein('abc', 'cba'), 2)
+		})
+	})
+	describe('levenshtein test suite', () => {
+		it('should calculate the distances between strings correctly', () => {
+			assert.deepEqual(
+				_f.map(
+					[{ a: 'b' }, { a: 'c', b: 'a' }, { a: 'd', e: 'f' }],
+					'a',
+				),
+				['b', 'c', 'd'],
+			)
+			assert.deepEqual(
+				_f.map([{ a: 'b' }, { b: 'a' }, { a: 'd', e: 'f' }], 'a'),
+				['b', undefined, 'd'],
+			)
+		})
+	})
 	it('should generate a number between 1 and 100', () => {
 		const number = _f.secureRandomNumber(1, 100)
 		assert.equal(number >= 1 && number <= 100, true)

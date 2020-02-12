@@ -239,6 +239,43 @@ var hasRepeatingCharacters = function (s, ignoreCase, minRepeat) {
     if (minRepeat === void 0) { minRepeat = 2; }
     return new RegExp("(.)\\1{" + minRepeat + ",}", ignoreCase ? 'gi' : 'g').test(s);
 };
+var levenshtein = function (src, target) {
+    if (src === target) {
+        return 0;
+    }
+    if (src.length === 0) {
+        return target.length;
+    }
+    if (target.length === 0) {
+        return src.length;
+    }
+    var m = src.length + 1;
+    var n = target.length + 1;
+    var dMatrix = new Array(m);
+    for (var i = 0; i < m; i++) {
+        dMatrix[i] = new Array(n).fill(0);
+    }
+    for (var i = 1; i < m; i++) {
+        dMatrix[i][0] = i;
+    }
+    for (var j = 1; j < n; j++) {
+        dMatrix[0][j] = j;
+    }
+    for (var j = 1; j < n; j++) {
+        for (var i = 1; i < m; i++) {
+            var cost = src[i - 1] === target[j - 1] ? 0 : 1;
+            /* delete, insert, and swap */
+            dMatrix[i][j] = [
+                dMatrix[i - 1][j] + 1,
+                dMatrix[i][j - 1] + 1,
+                dMatrix[i - 1][j - 1] + cost,
+            ].reduce(function (prev, current) {
+                return prev < current ? prev : current;
+            });
+        }
+    }
+    return dMatrix[m - 1][n - 1];
+};
 var secureRandomNumber = function (min, max) {
     var distance = max - min;
     var level = Math.ceil(Math.log(distance) / Math.log(256));
@@ -265,6 +302,9 @@ var keyToField = function (s, strip) {
             .trim();
 };
 var compact = function (a) { return a.filter(function (itm) { return itm; }); };
+var map = function (a, fn) {
+    return typeof fn === 'string' ? a.map(function (item) { return item[fn]; }) : a.map(fn);
+};
 var first = function (a, byRef) {
     if (byRef === void 0) { byRef = false; }
     if (byRef) {
@@ -502,5 +542,7 @@ module.exports = {
     hasRepeatingSets: hasRepeatingSets,
     getSequences: getSequences,
     hasSequences: hasSequences,
-    secureRandomNumber: secureRandomNumber
+    secureRandomNumber: secureRandomNumber,
+    levenshtein: levenshtein,
+    map: map
 };

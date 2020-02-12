@@ -49,6 +49,7 @@ const _f = require('underscore-functions')
 -   hasRepeatingSets = (s: string, ignoreCase?: boolean, minRepeat: number = 2) => Returns true if a string has repeating sets, `hellohellohello` = 2 repeated 'hello' sets.
 -   getSequences = (s: string, ignoreCase?: boolean) => Returns all sequences (eg. 123, abc, 321) in a string
 -   hasSequences = (s: string, ignoreCase?: boolean) => Returns true if a string has characters or numbers in sequence or reverse sequence (eg. 123, abc, 321)
+-   levenshtein = (s: string, s2: string) => Returns the number of edits (deletes/inserts/substitutions) required to get from string s to string s2.
 
 ## Array Functions
 
