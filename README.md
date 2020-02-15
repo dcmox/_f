@@ -64,6 +64,8 @@ const _f = require('underscore-functions')
 -   shuffle = (a: string | any[]) => Shuffle an array
 -   range = (start: number, end?: number, multiplier?: number) => Creates a range of numbers
 -   partition = (a: any[], size: number) => Partitions an array into segments of X size
+-   leftJoin = (a: any, b: any[], criteria?: () => boolean) => Left join an array of JSON documents onto a source
+-   rightJoin = (a: any, b: any[], criteria?: () => boolean) => Right join an array of JSON documents onto a source
 
 ## Number Functions
 
