@@ -29,6 +29,7 @@ import { last } from './last'
 import { leftJoin } from './leftJoin'
 import { leftRotate } from './leftRotate'
 import { levenshtein } from './levenshtein'
+import { lrange } from './lrange'
 import { map } from './map'
 import { br2nl, nl2br } from './nl2br'
 import { partition } from './partition'
@@ -92,6 +93,7 @@ module.exports = {
 	isAlpha,
 	isNumeric,
 	isAlphaNumeric,
+	lrange,
 	range,
 	unixTimestamp,
 	uniqueId,

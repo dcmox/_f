@@ -68,7 +68,8 @@ const _f = require('underscore-functions')
 -   deepClone = (a: any) => Deep clone an object or array so that is is a pure copy
 -   flat = (a: any) => Flatten an array
 -   shuffle = (a: string | any[]) => Shuffle an array
--   range = (start: number, end?: number, multiplier?: number) => Creates a range of numbers
+-   range = (start: number, end?: number, step?: number) => Creates a range of numbers.
+-   lrange = (start: number, end?: number, step?: number) => Generates a number within a range as you iterate through. Useful for large ranges of values.
 -   partition = (a: any[], size: number) => Partitions an array into segments of X size
 
 ## Number Functions

@@ -1,4 +1,5 @@
 import assert from 'assert'
+import { lrange } from '../lrange'
 const _f = require('../_f')
 
 describe('_f test suite', () => {
@@ -548,6 +549,19 @@ describe('_f test suite', () => {
 			-18,
 		])
 		assert.deepEqual(_f.range(0, -20, 1), [])
+	})
+	it('should create a large range', () => {
+		let iterations: number = 0
+		for (const num of lrange(0, 1000000, 2)) {
+			assert.equal(num % 2, 0)
+			iterations++
+		}
+		assert.equal(iterations, 500000)
+		const nums = []
+		for (const num of lrange(1, 10, 2)) {
+			nums.push(num)
+		}
+		assert.deepEqual(nums, [1, 3, 5, 7, 9])
 	})
 	it('should create a unique id', () => {
 		const id = _f.uniqueId()
