@@ -6,6 +6,7 @@ import { camelCase } from './camelCase'
 import { compact } from './compact'
 import { decodeHTML } from './decodeHTML'
 import { deepClone } from './deepClone'
+import { deepFreeze } from './deepFreeze'
 import { excerpt } from './excerpt'
 import { findFirst } from './findFirst'
 import { findLast } from './findLast'
@@ -47,14 +48,15 @@ import { toNumeric } from './toNumeric'
 import { toPath } from './toPath'
 import { unique } from './unique'
 import { uniqueId } from './uniqueId'
+import { unixTimestamp } from './unixTimestamp'
 import { upperCaseFirst } from './upperCaseFirst'
 import { upperCaseFirstInSentence } from './upperCaseFirstInSentence'
 import { upperCaseWords } from './upperCaseWords'
-import { unixTimestamp } from './unixTimestamp'
 
 module.exports = {
 	pascalCase,
 	camelCase,
+	deepFreeze,
 	nl2br,
 	br2nl,
 	splitByLength,

@@ -1,8 +1,8 @@
 {
 	"name": "underscore-functions",
-	"version": "0.6.9",
+	"version": "0.7.0",
 	"private": false,
-	"description": "String and array manipulation functions",
+	"description": "Useful string, array, number, and object functions library",
 	"main": "_f.js",
 	"engines": {
 		"node": ">=4.0.0"

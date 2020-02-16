@@ -7,6 +7,7 @@ var camelCase_1 = require("./camelCase");
 var compact_1 = require("./compact");
 var decodeHTML_1 = require("./decodeHTML");
 var deepClone_1 = require("./deepClone");
+var deepFreeze_1 = require("./deepFreeze");
 var excerpt_1 = require("./excerpt");
 var findFirst_1 = require("./findFirst");
 var findLast_1 = require("./findLast");
@@ -48,13 +49,14 @@ var toNumeric_1 = require("./toNumeric");
 var toPath_1 = require("./toPath");
 var unique_1 = require("./unique");
 var uniqueId_1 = require("./uniqueId");
+var unixTimestamp_1 = require("./unixTimestamp");
 var upperCaseFirst_1 = require("./upperCaseFirst");
 var upperCaseFirstInSentence_1 = require("./upperCaseFirstInSentence");
 var upperCaseWords_1 = require("./upperCaseWords");
-var unixTimestamp_1 = require("./unixTimestamp");
 module.exports = {
     pascalCase: pascalCase_1.pascalCase,
     camelCase: camelCase_1.camelCase,
+    deepFreeze: deepFreeze_1.deepFreeze,
     nl2br: nl2br_1.nl2br,
     br2nl: nl2br_1.br2nl,
     splitByLength: splitByLength_1.splitByLength,

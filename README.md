@@ -51,6 +51,12 @@ const _f = require('underscore-functions')
 -   hasSequences = (s: string, ignoreCase?: boolean) => Returns true if a string has characters or numbers in sequence or reverse sequence (eg. 123, abc, 321)
 -   levenshtein = (s: string, s2: string) => Returns the number of edits (deletes/inserts/substitutions) required to get from string s to string s2.
 
+## Object Functions
+
+-   deepFreeze = (a: any) => Make an object and all nested objects immutable
+-   leftJoin = (a: any, b: any[], criteria?: () => boolean) => Left join an array of JSON documents onto a source
+-   rightJoin = (a: any, b: any[], criteria?: () => boolean) => Right join an array of JSON documents onto a source
+
 ## Array Functions
 
 -   compact = (a: any[]) => Removes values that are falsey
@@ -64,8 +70,6 @@ const _f = require('underscore-functions')
 -   shuffle = (a: string | any[]) => Shuffle an array
 -   range = (start: number, end?: number, multiplier?: number) => Creates a range of numbers
 -   partition = (a: any[], size: number) => Partitions an array into segments of X size
--   leftJoin = (a: any, b: any[], criteria?: () => boolean) => Left join an array of JSON documents onto a source
--   rightJoin = (a: any, b: any[], criteria?: () => boolean) => Right join an array of JSON documents onto a source
 
 ## Number Functions
 
