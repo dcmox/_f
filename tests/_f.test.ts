@@ -514,8 +514,25 @@ describe('_f test suite', () => {
 			items[2],
 		)
 	})
-	it('should compact grab unique values in an array', () => {
+	it('should grab unique values in an array', () => {
 		assert.deepEqual(_f.unique([1, 2, 3, 4, 2, 5, 2]), [1, 2, 3, 4, 5])
+	})
+	it('should grab unique values by a key in an array', () => {
+		assert.deepEqual(
+			_f.uniqueBy(
+				[
+					{ x: 1 },
+					{ x: 2 },
+					{ x: 3 },
+					{ x: 4 },
+					{ x: 2, y: 1 },
+					{ x: 5 },
+					{ x: 2 },
+				],
+				'x',
+			),
+			[{ x: 1 }, { x: 2 }, { x: 3 }, { x: 4 }, { x: 5 }],
+		)
 	})
 	it('should test if a string contains only alpha characters', () => {
 		assert.deepEqual(_f.isAlpha('abc'), true)

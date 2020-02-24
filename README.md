@@ -65,6 +65,7 @@ const _f = require('underscore-functions')
 -   findFirst = (a: any[], cond: (item: any) => boolean, byRef: boolean = false) => Returns the first element in an array (as a copy by default) that matches a condition
 -   findLast = (a: any[], cond: (item: any) => boolean, byRef: boolean = false) => Returns the last element in an array (as a copy by default) that matches a condition
 -   unique = (a: any[]) => Returns only the unique values in an array
+-   unique = (a: any[], prop: string, byRef: boolean = false) => Returns only the unique values in an array by a specific property. Returns a new copy by default.
 -   deepClone = (a: any) => Deep clone an object or array so that is is a pure copy
 -   flat = (a: any) => Flatten an array
 -   shuffle = (a: string | any[]) => Shuffle an array
