@@ -42,12 +42,17 @@ exports.deepClone = function (src) {
             result[key] = exports.deepClone(src[key]);
         }
         else if (typeof src[key] === 'object') {
-            var prototype = Object.getPrototypeOf(src[key]);
-            result[key] = exports.deepClone(src[key]);
-            Object.setPrototypeOf(result[key], prototype);
-            Object.getOwnPropertySymbols(src[key]).forEach(function (symbol) {
-                result[key][symbol] = src[key][symbol];
-            });
+            if (src === src[key]) {
+                result[key] = src; // maintain self references
+            }
+            else {
+                var prototype = Object.getPrototypeOf(src[key]);
+                result[key] = exports.deepClone(src[key]);
+                Object.setPrototypeOf(result[key], prototype);
+                Object.getOwnPropertySymbols(src[key]).forEach(function (symbol) {
+                    result[key][symbol] = src[key][symbol];
+                });
+            }
         }
         else {
             result[key] = src[key];

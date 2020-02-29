@@ -23,7 +23,7 @@ const CONSTRUCTOR_TAGS = [
 export const deepClone = (src: any): any => {
 	if (Array.isArray(src)) {
 		if (src.some((e: any) => Array.isArray(e))) {
-			return src.map(e => (Array.isArray(src) ? deepClone(e) : e))
+			return src.map((e) => (Array.isArray(src) ? deepClone(e) : e))
 		} else {
 			return src.slice(0)
 		}
@@ -45,14 +45,18 @@ export const deepClone = (src: any): any => {
 			if (Array.isArray(src[key])) {
 				result[key] = deepClone(src[key])
 			} else if (typeof src[key] === 'object') {
-				const prototype: any = Object.getPrototypeOf(src[key])
-				result[key] = deepClone(src[key])
-				Object.setPrototypeOf(result[key], prototype)
-				Object.getOwnPropertySymbols(src[key]).forEach(
-					(symbol: symbol) => {
-						result[key][symbol] = src[key][symbol]
-					},
-				)
+				if (src === src[key]) {
+					result[key] = src // maintain self references
+				} else {
+					const prototype: any = Object.getPrototypeOf(src[key])
+					result[key] = deepClone(src[key])
+					Object.setPrototypeOf(result[key], prototype)
+					Object.getOwnPropertySymbols(src[key]).forEach(
+						(symbol: symbol) => {
+							result[key][symbol] = src[key][symbol]
+						},
+					)
+				}
 			} else {
 				result[key] = src[key]
 			}

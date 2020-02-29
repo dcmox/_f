@@ -1,6 +1,6 @@
 {
 	"name": "underscore-functions",
-	"version": "0.7.2",
+	"version": "0.7.3",
 	"private": false,
 	"description": "Useful string, array, number, and object functions library",
 	"main": "_f.js",
