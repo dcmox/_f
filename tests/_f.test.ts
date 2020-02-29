@@ -1,5 +1,6 @@
 import assert from 'assert'
 import { lrange } from '../lrange'
+import { ERoundOption } from '../round'
 const _f = require('../_f')
 
 describe('_f test suite', () => {
@@ -570,6 +571,13 @@ describe('_f test suite', () => {
 		assert.deepEqual(_f.isNumeric('abc'), false)
 		assert.deepEqual(_f.isNumeric('123-456', '-'), true)
 		assert.deepEqual(_f.isNumeric('1234'), true)
+	})
+	it('should round a number to the nearest X', () => {
+		assert.deepEqual(_f.round(16, 5), 15)
+		assert.deepEqual(_f.round(12.2), 12)
+		assert.deepEqual(_f.round(15, 20), 20)
+		assert.deepEqual(_f.round(6, 2.5, ERoundOption.ROUND_DOWN), 5)
+		assert.deepEqual(_f.round(6, 2.5, ERoundOption.ROUND_UP), 7.5)
 	})
 	it('should test if a string contains only alpha-numeric characters', () => {
 		assert.deepEqual(_f.isAlphaNumeric('abc123'), true)

@@ -43,6 +43,7 @@ import { reverseWords } from './reverseWords'
 import { rightJoin } from './rightJoin'
 import { rightRotate } from './rightRotate'
 import { rightShift } from './rightShift'
+import { round } from './round'
 import { secureRandomNumber } from './secureRandomNumber'
 import { shuffle } from './shuffle'
 import { splitByLength } from './splitByLength'
@@ -102,6 +103,7 @@ module.exports = {
 	rightJoin,
 	rightRotate,
 	rightShift,
+	round,
 	secureRandomNumber,
 	shuffle,
 	splitByLength,

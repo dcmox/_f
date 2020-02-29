@@ -44,6 +44,7 @@ var reverseWords_1 = require("./reverseWords");
 var rightJoin_1 = require("./rightJoin");
 var rightRotate_1 = require("./rightRotate");
 var rightShift_1 = require("./rightShift");
+var round_1 = require("./round");
 var secureRandomNumber_1 = require("./secureRandomNumber");
 var shuffle_1 = require("./shuffle");
 var splitByLength_1 = require("./splitByLength");
@@ -102,6 +103,7 @@ module.exports = {
     rightJoin: rightJoin_1.rightJoin,
     rightRotate: rightRotate_1.rightRotate,
     rightShift: rightShift_1.rightShift,
+    round: round_1.round,
     secureRandomNumber: secureRandomNumber_1.secureRandomNumber,
     shuffle: shuffle_1.shuffle,
     splitByLength: splitByLength_1.splitByLength,

@@ -76,6 +76,7 @@ const _f = require('underscore-functions')
 ## Number Functions
 
 -   secureRandomNumber = (min: number, max: number) => Generates a cryptographically secure number using the crypto NodeJS package.
+-   round = (n: number, precision: number = 0.5, ERoundOption = { ROUND: 0, ROUND_UP: 1, ROUND_DOWN: 2 } ) => Round to the nearest X number.
 
 ## Date Functions
 
