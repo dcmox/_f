@@ -436,7 +436,34 @@ describe('_f test suite', () => {
 			assert.deepEqual(_f.hasRepeatingCharacters(test.s), test.expected)
 		})
 	})
-
+	it('should justify text', () => {
+		const tests: any = [
+			{
+				s:
+					'Science is what we understand well enough to explain to a computer. Art is everything else we do.',
+				expected:
+					'Science  is  what we\nunderstand      well\nenough   to  explain\nto  a  computer. Art\nis  everything  else\nwe do.',
+			},
+		]
+		tests.forEach((test: any) => {
+			assert.deepEqual(_f.justifyText(test.s), test.expected)
+		})
+	})
+	it('should detect if a string is JSON', () => {
+		const tests: any = [
+			{
+				s: JSON.stringify({ field: 'test' }),
+				expected: true,
+			},
+			{
+				s: JSON.stringify({ field: 'testing', boolean: false }),
+				expected: true,
+			},
+		]
+		tests.forEach((test: any) => {
+			assert.deepEqual(_f.isJson(test.s), test.expected)
+		})
+	})
 	it('should calculate the distances between strings correctly', () => {
 		assert.equal(_f.levenshtein('test', 'test'), 0)
 		assert.equal(_f.levenshtein('', 'test'), 4)

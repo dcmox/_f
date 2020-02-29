@@ -23,8 +23,10 @@ var hasSequences_1 = require("./hasSequences");
 var hex_1 = require("./hex");
 var isAlpha_1 = require("./isAlpha");
 var isAlphaNumeric_1 = require("./isAlphaNumeric");
+var isJson_1 = require("./isJson");
 var isNumeric_1 = require("./isNumeric");
 var isShouting_1 = require("./isShouting");
+var justifyText_1 = require("./justifyText");
 var keyToField_1 = require("./keyToField");
 var last_1 = require("./last");
 var leftJoin_1 = require("./leftJoin");
@@ -79,8 +81,10 @@ module.exports = {
     hasSequences: hasSequences_1.hasSequences,
     isAlpha: isAlpha_1.isAlpha,
     isAlphaNumeric: isAlphaNumeric_1.isAlphaNumeric,
+    isJson: isJson_1.isJson,
     isNumeric: isNumeric_1.isNumeric,
     isShouting: isShouting_1.isShouting,
+    justifyText: justifyText_1.justifyText,
     keyToField: keyToField_1.keyToField,
     last: last_1.last,
     leftJoin: leftJoin_1.leftJoin,

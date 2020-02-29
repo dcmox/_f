@@ -22,8 +22,10 @@ import { hasSequences } from './hasSequences'
 import { fromHex, toHex } from './hex'
 import { isAlpha } from './isAlpha'
 import { isAlphaNumeric } from './isAlphaNumeric'
+import { isJson } from './isJson'
 import { isNumeric } from './isNumeric'
 import { isShouting } from './isShouting'
+import { justifyText } from './justifyText'
 import { keyToField } from './keyToField'
 import { last } from './last'
 import { leftJoin } from './leftJoin'
@@ -79,8 +81,10 @@ module.exports = {
 	hasSequences,
 	isAlpha,
 	isAlphaNumeric,
+	isJson,
 	isNumeric,
 	isShouting,
+	justifyText,
 	keyToField,
 	last,
 	leftJoin,

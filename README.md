@@ -2,9 +2,7 @@
 
 Moxy String and Array manipulation library for TypeScript / NodeJS. Array functions are immutable by default, providing you with copies rather than references.
 
-## Upgrade Notice
-
-0.6.7 is incompatible with previous versions due to updating the export so you can require using the following:
+## Usage
 
 ```
 const _f = require('underscore-functions')
@@ -50,6 +48,8 @@ const _f = require('underscore-functions')
 -   getSequences = (s: string, ignoreCase?: boolean) => Returns all sequences (eg. 123, abc, 321) in a string
 -   hasSequences = (s: string, ignoreCase?: boolean) => Returns true if a string has characters or numbers in sequence or reverse sequence (eg. 123, abc, 321)
 -   levenshtein = (s: string, s2: string) => Returns the number of edits (deletes/inserts/substitutions) required to get from string s to string s2.
+-   justifyText = (text: string, len: number = 20) => Returns justified text broken into lines of n size.
+-   isJson = (s: string) => Returns true if string is valid JSON
 
 ## Object Functions
 
