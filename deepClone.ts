@@ -46,7 +46,7 @@ export const deepClone = (src: any): any => {
 				result[key] = deepClone(src[key])
 			} else if (typeof src[key] === 'object') {
 				if (src === src[key]) {
-					result[key] = src // maintain self references
+					result[key] = result // maintain self references
 				} else {
 					const prototype: any = Object.getPrototypeOf(src[key])
 					result[key] = deepClone(src[key])

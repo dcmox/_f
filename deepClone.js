@@ -43,7 +43,7 @@ exports.deepClone = function (src) {
         }
         else if (typeof src[key] === 'object') {
             if (src === src[key]) {
-                result[key] = src; // maintain self references
+                result[key] = result; // maintain self references
             }
             else {
                 var prototype = Object.getPrototypeOf(src[key]);
