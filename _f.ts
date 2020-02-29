@@ -47,6 +47,7 @@ import { round } from './round'
 import { secureRandomNumber } from './secureRandomNumber'
 import { shuffle } from './shuffle'
 import { splitByLength } from './splitByLength'
+import { stringifyCache, stringifyT } from './stringify'
 import { toAlpha } from './toAlpha'
 import { toNumeric } from './toNumeric'
 import { toPath } from './toPath'
@@ -107,6 +108,8 @@ module.exports = {
 	secureRandomNumber,
 	shuffle,
 	splitByLength,
+	stringifyCache,
+	stringifyT,
 	toAlpha,
 	toBase64,
 	toBinary,

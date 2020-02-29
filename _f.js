@@ -48,6 +48,7 @@ var round_1 = require("./round");
 var secureRandomNumber_1 = require("./secureRandomNumber");
 var shuffle_1 = require("./shuffle");
 var splitByLength_1 = require("./splitByLength");
+var stringify_1 = require("./stringify");
 var toAlpha_1 = require("./toAlpha");
 var toNumeric_1 = require("./toNumeric");
 var toPath_1 = require("./toPath");
@@ -107,6 +108,8 @@ module.exports = {
     secureRandomNumber: secureRandomNumber_1.secureRandomNumber,
     shuffle: shuffle_1.shuffle,
     splitByLength: splitByLength_1.splitByLength,
+    stringifyCache: stringify_1.stringifyCache,
+    stringifyT: stringify_1.stringifyT,
     toAlpha: toAlpha_1.toAlpha,
     toBase64: base64_1.toBase64,
     toBinary: binary_1.toBinary,

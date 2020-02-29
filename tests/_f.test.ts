@@ -465,6 +465,46 @@ describe('_f test suite', () => {
 			assert.deepEqual(_f.isJson(test.s), test.expected)
 		})
 	})
+	it('should stringify a JSON object', () => {
+		class MoxyDate {}
+		const d = new Date()
+
+		const obj = {
+			a: 'test',
+			b: '"test"',
+			c: 'world',
+			d: 'hello',
+			e: 'hmmmm',
+			f: [1, 2, 3],
+			g: 12345,
+			h: true,
+			i: {}, // Test breaks on function declaration but doesn't in actual usage
+			j: new MoxyDate(),
+			k: { a: 123, b: 'def', g: true },
+			l: d,
+			m: String('test'),
+			p: 'TEST',
+			q: new Map([
+				[1, 2],
+				[3, 4],
+			]),
+		}
+		const stringify = _f.stringifyCache(obj)
+		assert.deepEqual(stringify(obj), JSON.stringify(obj))
+
+		const custom = {
+			n: new Int8Array([1, 2, 3]),
+			o: new BigInt64Array([BigInt(1), BigInt(2)]),
+		}
+		const stringifyCustom = _f.stringifyCache(custom)
+		assert.deepEqual(
+			stringifyCustom(custom),
+			'{"n":[1,2,3],"o":BigInt64Array [1,2]}',
+		)
+		assert.deepEqual(_f.stringifyT(false), 'false')
+		assert.deepEqual(_f.stringifyT(d), '"' + d.toISOString() + '"')
+		assert.deepEqual(_f.stringifyT(123), '123')
+	})
 	it('should calculate the distances between strings correctly', () => {
 		assert.equal(_f.levenshtein('test', 'test'), 0)
 		assert.equal(_f.levenshtein('', 'test'), 4)
