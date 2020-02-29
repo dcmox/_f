@@ -51,7 +51,7 @@ const _f = require('underscore-functions')
 -   justifyText = (text: string, len: number = 20) => Returns justified text broken into lines of n size.
 -   isJson = (s: string) => Returns true if string is valid JSON
 -   stringifyCache = (s: string, \_returnTemplate: boolean = false): TStringifyCacheResult => Caches the object schema and returns a stringify function that is twice as fast as native JSON.stringify (on average)
--   stringifyT = (o: any, tpl: string = '') => Returns a string representation of an object. This is the same function that is returend by stringifyCache. Use in combination with the \_returnTemplate parameter of stringifyCache to cache known object schemas and stringify them later.
+-   stringifyT = (o: any, tpl: string = '') => Returns a string representation of an object. This is the same function that is returned by stringifyCache. Use in combination with the \_returnTemplate parameter of stringifyCache to cache known object schemas and stringify them later.
 
 ## Object Functions
 
