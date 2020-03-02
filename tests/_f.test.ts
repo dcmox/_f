@@ -497,10 +497,7 @@ describe('_f test suite', () => {
 			o: new BigInt64Array([BigInt(1), BigInt(2)]),
 		}
 		const stringifyCustom = _f.stringifyCache(custom)
-		assert.deepEqual(
-			stringifyCustom(custom),
-			'{"n":[1,2,3],"o":BigInt64Array [1,2]}',
-		)
+		assert.deepEqual(stringifyCustom(custom), '{"n":[1,2,3],"o":{}}')
 		assert.deepEqual(_f.stringifyT(false), 'false')
 		assert.deepEqual(_f.stringifyT(d), '"' + d.toISOString() + '"')
 		assert.deepEqual(_f.stringifyT(123), '123')

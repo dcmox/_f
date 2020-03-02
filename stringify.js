@@ -75,9 +75,9 @@ exports.stringifyCache = function (o, _returnTemplate) {
                 }
                 switch (values[i - 1].constructor) {
                     case BigInt64Array:
-                        return 'BigInt64Array [' + values[i - 1] + ']';
+                        return '{}'; // 'BigInt64Array [' + values[i - 1] + ']'
                     case BigUint64Array:
-                        return 'BigUint64Array [' + values[i - 1] + ']';
+                        return '{}'; // 'BigUint64Array [' + values[i - 1] + ']'
                     case Array:
                     case Int8Array:
                     case Int16Array:
@@ -138,9 +138,9 @@ exports.stringifyT = function (o, tpl) {
             }
             switch (values[i - 1].constructor) {
                 case BigInt64Array:
-                    return 'BigInt64Array [' + values[i - 1] + ']';
+                    return '{}'; // 'BigInt64Array [' + values[i - 1] + ']'
                 case BigUint64Array:
-                    return 'BigUint64Array [' + values[i - 1] + ']';
+                    return '{}'; // 'BigUint64Array [' + values[i - 1] + ']'
                 case Array:
                 case Int8Array:
                 case Int16Array:
