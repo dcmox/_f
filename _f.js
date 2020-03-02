@@ -34,6 +34,7 @@ var leftRotate_1 = require("./leftRotate");
 var levenshtein_1 = require("./levenshtein");
 var lrange_1 = require("./lrange");
 var map_1 = require("./map");
+var math_1 = require("./math");
 var nl2br_1 = require("./nl2br");
 var partition_1 = require("./partition");
 var pascalCase_1 = require("./pascalCase");
@@ -60,12 +61,14 @@ var upperCaseFirst_1 = require("./upperCaseFirst");
 var upperCaseFirstInSentence_1 = require("./upperCaseFirstInSentence");
 var upperCaseWords_1 = require("./upperCaseWords");
 module.exports = {
+    add: math_1.add,
     br2nl: nl2br_1.br2nl,
     camelCase: camelCase_1.camelCase,
     compact: compact_1.compact,
     decodeHTML: decodeHTML_1.decodeHTML,
     deepClone: deepClone_1.deepClone,
     deepFreeze: deepFreeze_1.deepFreeze,
+    divide: math_1.divide,
     excerpt: excerpt_1.excerpt,
     findFirst: findFirst_1.findFirst,
     findLast: findLast_1.findLast,
@@ -94,6 +97,7 @@ module.exports = {
     levenshtein: levenshtein_1.levenshtein,
     lrange: lrange_1.lrange,
     map: map_1.map,
+    multiply: math_1.multiply,
     nl2br: nl2br_1.nl2br,
     partition: partition_1.partition,
     pascalCase: pascalCase_1.pascalCase,
@@ -110,6 +114,7 @@ module.exports = {
     splitByLength: splitByLength_1.splitByLength,
     stringifyCache: stringify_1.stringifyCache,
     stringifyT: stringify_1.stringifyT,
+    subtract: math_1.subtract,
     toAlpha: toAlpha_1.toAlpha,
     toBase64: base64_1.toBase64,
     toBinary: binary_1.toBinary,

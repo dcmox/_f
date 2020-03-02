@@ -528,6 +528,15 @@ describe('_f test suite', () => {
 		const number2 = _f.secureRandomNumber(333, 444)
 		assert.equal(number2 >= 333 && number <= 444, true)
 	})
+
+	it('should add, subtract, divide, and multiply', () => {
+		assert.equal(_f.add(0.1, 0.2), 0.3)
+		assert.equal(_f.add(0.1, 0.2, 0.1, 0.1), 0.5)
+		assert.equal(_f.subtract(0.3, 0.1), 0.2)
+		assert.equal(_f.subtract(0.2, 0.1), 0.1)
+		assert.equal(_f.multiply(0.2, 0.1), 0.02)
+		assert.equal(_f.divide(0.02, 0.1), 0.2)
+	})
 	it('should compact an array', () => {
 		assert.deepEqual(_f.compact([1, 2, null, false, 3, 4, undefined, 5]), [
 			1,

@@ -67,18 +67,22 @@ const _f = require('underscore-functions')
 -   findFirst = (a: any[], cond: (item: any) => boolean, byRef: boolean = false) => Returns the first element in an array (as a copy by default) that matches a condition
 -   findLast = (a: any[], cond: (item: any) => boolean, byRef: boolean = false) => Returns the last element in an array (as a copy by default) that matches a condition
 -   unique = (a: any[]) => Returns only the unique values in an array
--   unique = (a: any[], prop: string, byRef: boolean = false) => Returns only the unique values in an array by a specific property. Returns a new copy by default.
+-   unique = (a: any[], prop: string, byRef: boolean = false) => Returns only the unique values in an array by a specific property. Returns a new copy by default
 -   deepClone = (a: any) => Deep clone an object or array so that is is a pure copy
 -   flat = (a: any) => Flatten an array
 -   shuffle = (a: string | any[]) => Shuffle an array
--   range = (start: number, end?: number, step?: number) => Creates a range of numbers.
--   lrange = (start: number, end?: number, step?: number) => Generates a number within a range as you iterate through. Useful for large ranges of values.
+-   range = (start: number, end?: number, step?: number) => Creates a range of numbers
+-   lrange = (start: number, end?: number, step?: number) => Generates a number within a range as you iterate through. Useful for large ranges of values
 -   partition = (a: any[], size: number) => Partitions an array into segments of X size
 
 ## Number Functions
 
 -   secureRandomNumber = (min: number, max: number) => Generates a cryptographically secure number using the crypto NodeJS package.
 -   round = (n: number, precision: number = 0.5, ERoundOption = { ROUND: 0, ROUND_UP: 1, ROUND_DOWN: 2 } ) => Round to the nearest X number.
+-   add = (...n: number[]) => Adds numbers together with precision up to 15 decimal places. Works around the floating point issue (0.2 + 0.1 = 0.30000000000000004, should be 0.3)
+-   subtract = (...n: number[]) => Subtracts numbers with precision up to 15 decimal places
+-   multiply = (...n: number[]) => Multiply numbers with precision up to 15 decimal places. Works around the floating point issue (0.2 \* 0.1 = 0.020000000000000004, should be 0.02)
+-   divide = (...n: number[]) => Divide numbers with precision up to 15 decimal places
 
 ## Date Functions
 

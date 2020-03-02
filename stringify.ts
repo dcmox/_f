@@ -1,4 +1,4 @@
-type TStringifyCacheResult = (o: any) => string | string
+type TStringifyCacheResult = ((o: any) => string) | string
 const delimiter = String.fromCharCode(0)
 export const stringifyCache = (
 	o: any,

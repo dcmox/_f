@@ -33,6 +33,7 @@ import { leftRotate } from './leftRotate'
 import { levenshtein } from './levenshtein'
 import { lrange } from './lrange'
 import { map } from './map'
+import { add, divide, multiply, subtract } from './math'
 import { br2nl, nl2br } from './nl2br'
 import { partition } from './partition'
 import { pascalCase } from './pascalCase'
@@ -60,12 +61,14 @@ import { upperCaseFirstInSentence } from './upperCaseFirstInSentence'
 import { upperCaseWords } from './upperCaseWords'
 
 module.exports = {
+	add,
 	br2nl,
 	camelCase,
 	compact,
 	decodeHTML,
 	deepClone,
 	deepFreeze,
+	divide,
 	excerpt,
 	findFirst,
 	findLast,
@@ -94,6 +97,7 @@ module.exports = {
 	levenshtein,
 	lrange,
 	map,
+	multiply,
 	nl2br,
 	partition,
 	pascalCase,
@@ -110,6 +114,7 @@ module.exports = {
 	splitByLength,
 	stringifyCache,
 	stringifyT,
+	subtract,
 	toAlpha,
 	toBase64,
 	toBinary,
