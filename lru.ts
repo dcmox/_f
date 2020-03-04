@@ -62,25 +62,26 @@ export class LRUCache {
 	}
 
 	private prune(): void {
-		if (this.cache.size === this.limit && this.tail) {
+		if (this.cache.size === this.limit && this.tail && this.tail.key) {
 			this.remove(this.tail.key)
 		}
 	}
 
 	private remove(key: any): void {
 		const node = this.cache.get(key)
-		if (node.prev !== null) {
-			node.prev.next = node.next
-		} else {
-			this.head = node.next
-		}
+		if (node) {
+			if (node.prev !== null) {
+				node.prev.next = node.next
+			} else {
+				this.head = node.next
+			}
 
-		if (node.next !== null) {
-			node.next.prev = node.prev
-		} else {
-			this.tail = node.prev
+			if (node.next !== null) {
+				node.next.prev = node.prev
+			} else {
+				this.tail = node.prev
+			}
 		}
-
 		this.cache.delete(key)
 	}
 }

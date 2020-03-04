@@ -48,23 +48,25 @@ var LRUCache = /** @class */ (function () {
         this.cache.clear();
     };
     LRUCache.prototype.prune = function () {
-        if (this.cache.size === this.limit && this.tail) {
+        if (this.cache.size === this.limit && this.tail && this.tail.key) {
             this.remove(this.tail.key);
         }
     };
     LRUCache.prototype.remove = function (key) {
         var node = this.cache.get(key);
-        if (node.prev !== null) {
-            node.prev.next = node.next;
-        }
-        else {
-            this.head = node.next;
-        }
-        if (node.next !== null) {
-            node.next.prev = node.prev;
-        }
-        else {
-            this.tail = node.prev;
+        if (node) {
+            if (node.prev !== null) {
+                node.prev.next = node.next;
+            }
+            else {
+                this.head = node.next;
+            }
+            if (node.next !== null) {
+                node.next.prev = node.prev;
+            }
+            else {
+                this.tail = node.prev;
+            }
         }
         this.cache["delete"](key);
     };
