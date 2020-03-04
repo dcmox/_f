@@ -1,6 +1,6 @@
 # \_f
 
-Moxy String and Array manipulation library for TypeScript / NodeJS. Array functions are immutable by default, providing you with copies rather than references.
+Moxy String, Array, and Object library for TypeScript / NodeJS. Array functions are immutable by default, providing you with copies rather than references.
 
 ## Usage
 
@@ -50,7 +50,7 @@ const _f = require('underscore-functions')
 -   levenshtein = (s: string, s2: string) => Returns the number of edits (deletes/inserts/substitutions) required to get from string s to string s2.
 -   justifyText = (text: string, len: number = 20) => Returns justified text broken into lines of n size.
 -   isJson = (s: string) => Returns true if string is valid JSON
--   stringifyCache = (s: string, \_returnTemplate: boolean = false): TStringifyCacheResult => Caches the object schema and returns a stringify function that is twice as fast as native JSON.stringify (on average)
+-   stringifyCache = (o: any, \_returnTemplate: boolean = false): TStringifyCacheResult => Caches the object schema and returns a stringify function that is twice as fast as native JSON.stringify (on average)
 -   stringifyT = (o: any, tpl: string = '') => Returns a string representation of an object. This is the same function that is returned by stringifyCache. Use in combination with the \_returnTemplate parameter of stringifyCache to cache known object schemas and stringify them later.
 
 ## Object Functions
@@ -87,6 +87,10 @@ const _f = require('underscore-functions')
 ## Date Functions
 
 -   unixTimestamp = () => Returns the time in milliseconds since the Unix epoch (00:00:00 UTC on 1 January 1970)
+
+## Misc Functions
+
+-   memoize = (n: number)(fn: (...args: any) => any) => Caches n results of the callback function passed into it. eg: \_f.memoize(5)(callbackFn) will store the most recently used results based on the included arguments. Highly efficient for recursive algorithms where you don't want to recalculate explored states/paths. Argument checks are done by value (not by reference). This algorithm performs better than [memoizerific](https://github.com/thinkloop/memoizerific) by a factor of 10 in some cases (for example, when reaching the cache limit)
 
 ## Usage
 

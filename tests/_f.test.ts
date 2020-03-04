@@ -502,6 +502,15 @@ describe('_f test suite', () => {
 		assert.deepEqual(_f.stringifyT(d), '"' + d.toISOString() + '"')
 		assert.deepEqual(_f.stringifyT(123), '123')
 	})
+	it('should memoize a function', () => {
+		const memoized = _f.memoize(1)(function(a: number, b: number) {
+			return a + b
+		})
+		memoized(1, 2)
+		assert.equal(memoized(1, 2), 3)
+		assert.equal(memoized(3, 4), 7)
+		assert.equal(memoized(3, 4), 7)
+	})
 	it('should calculate the distances between strings correctly', () => {
 		assert.equal(_f.levenshtein('test', 'test'), 0)
 		assert.equal(_f.levenshtein('', 'test'), 4)

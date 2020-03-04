@@ -33,8 +33,10 @@ var leftJoin_1 = require("./leftJoin");
 var leftRotate_1 = require("./leftRotate");
 var levenshtein_1 = require("./levenshtein");
 var lrange_1 = require("./lrange");
+var lru_1 = require("./lru");
 var map_1 = require("./map");
 var math_1 = require("./math");
+var memoize_1 = require("./memoize");
 var nl2br_1 = require("./nl2br");
 var partition_1 = require("./partition");
 var pascalCase_1 = require("./pascalCase");
@@ -96,7 +98,9 @@ module.exports = {
     leftRotate: leftRotate_1.leftRotate,
     levenshtein: levenshtein_1.levenshtein,
     lrange: lrange_1.lrange,
+    LRUCache: lru_1.LRUCache,
     map: map_1.map,
+    memoize: memoize_1.memoize,
     multiply: math_1.multiply,
     nl2br: nl2br_1.nl2br,
     partition: partition_1.partition,

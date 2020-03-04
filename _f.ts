@@ -32,8 +32,10 @@ import { leftJoin } from './leftJoin'
 import { leftRotate } from './leftRotate'
 import { levenshtein } from './levenshtein'
 import { lrange } from './lrange'
+import { LRUCache } from './lru'
 import { map } from './map'
 import { add, divide, multiply, subtract } from './math'
+import { memoize } from './memoize'
 import { br2nl, nl2br } from './nl2br'
 import { partition } from './partition'
 import { pascalCase } from './pascalCase'
@@ -96,7 +98,9 @@ module.exports = {
 	leftRotate,
 	levenshtein,
 	lrange,
+	LRUCache,
 	map,
+	memoize,
 	multiply,
 	nl2br,
 	partition,
