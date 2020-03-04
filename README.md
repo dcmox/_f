@@ -2,6 +2,12 @@
 
 Moxy String, Array, and Object library for TypeScript / NodeJS. Array functions are immutable by default, providing you with copies rather than references.
 
+## Installation
+
+```
+npm i underscore-functions
+```
+
 ## Usage
 
 ```
