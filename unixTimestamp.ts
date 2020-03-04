@@ -1,1 +1,1 @@
-export const unixTimestamp = (d?: string) => (d ? +new Date(d) : +new Date())
+export const unixTimestamp = (ds?: string) => (ds ? +new Date(ds) : +new Date())
