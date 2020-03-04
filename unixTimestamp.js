@@ -1,3 +1,3 @@
 "use strict";
 exports.__esModule = true;
-exports.unixTimestamp = function () { return new Date().valueOf(); };
+exports.unixTimestamp = function (d) { return (d ? +new Date(d) : +new Date()); };
