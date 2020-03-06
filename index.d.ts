@@ -3,6 +3,7 @@
 // Definitions by: Daniel Moxon https://www.underscore-functions.com
 declare module 'underscore-functions' {
 	declare type TStringifyCacheResult = ((o: any) => string) | string
+	declare function intToRoman(num: number): number
 	declare function toBase64(s: string): string
 	declare function fromBase64(s: string): string
 	declare function fromBinary(s: string): string

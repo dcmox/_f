@@ -546,6 +546,17 @@ describe('_f test suite', () => {
 		assert.equal(_f.multiply(0.2, 0.1), 0.02)
 		assert.equal(_f.divide(0.02, 0.1), 0.2)
 	})
+	it('int to roman numeral', () => {
+		assert.equal(_f.intToRoman(1981), 'MCMLXXXI')
+		assert.equal(_f.intToRoman(4242), '(IV)CCXLII')
+		assert.equal(_f.intToRoman(1337), 'MCCCXXXVII')
+		assert.equal(_f.intToRoman(3), 'III')
+		assert.equal(_f.intToRoman(4), 'IV')
+		assert.equal(_f.intToRoman(5), 'V')
+		assert.equal(_f.intToRoman(9), 'IX')
+		assert.equal(_f.intToRoman(435097), '(CD)(X)(X)(X)(V)XCVII')
+		assert.equal(_f.intToRoman(3999999), '(M)(M)(M)(CM)(XC)(IX)CMXCIX')
+	})
 	it('should compact an array', () => {
 		assert.deepEqual(_f.compact([1, 2, null, false, 3, 4, undefined, 5]), [
 			1,

@@ -89,6 +89,7 @@ const _f = require('underscore-functions')
 -   subtract = (...n: number[]) => Subtracts numbers with precision up to 15 decimal places
 -   multiply = (...n: number[]) => Multiply numbers with precision up to 15 decimal places. Works around the floating point issue (0.2 \* 0.1 = 0.020000000000000004, should be 0.02)
 -   divide = (...n: number[]) => Divide numbers with precision up to 15 decimal places
+-   intToRoman = (num: number) => Converts numbers less than 4,000,000 to roman numeral, (eg: 7 = VII)
 
 ## Date Functions
 

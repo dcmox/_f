@@ -20,6 +20,7 @@ import { hasRepeatingCharacters } from './hasRepeatingCharacters'
 import { hasRepeatingSets } from './hasRepeatingSets'
 import { hasSequences } from './hasSequences'
 import { fromHex, toHex } from './hex'
+import { intToRoman } from './intToRoman'
 import { isAlpha } from './isAlpha'
 import { isAlphaNumeric } from './isAlphaNumeric'
 import { isJson } from './isJson'
@@ -86,6 +87,7 @@ module.exports = {
 	hasRepeatingCharacters,
 	hasRepeatingSets,
 	hasSequences,
+	intToRoman,
 	isAlpha,
 	isAlphaNumeric,
 	isJson,

@@ -21,6 +21,7 @@ var hasRepeatingCharacters_1 = require("./hasRepeatingCharacters");
 var hasRepeatingSets_1 = require("./hasRepeatingSets");
 var hasSequences_1 = require("./hasSequences");
 var hex_1 = require("./hex");
+var intToRoman_1 = require("./intToRoman");
 var isAlpha_1 = require("./isAlpha");
 var isAlphaNumeric_1 = require("./isAlphaNumeric");
 var isJson_1 = require("./isJson");
@@ -86,6 +87,7 @@ module.exports = {
     hasRepeatingCharacters: hasRepeatingCharacters_1.hasRepeatingCharacters,
     hasRepeatingSets: hasRepeatingSets_1.hasRepeatingSets,
     hasSequences: hasSequences_1.hasSequences,
+    intToRoman: intToRoman_1.intToRoman,
     isAlpha: isAlpha_1.isAlpha,
     isAlphaNumeric: isAlphaNumeric_1.isAlphaNumeric,
     isJson: isJson_1.isJson,
