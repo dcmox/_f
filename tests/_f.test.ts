@@ -511,6 +511,29 @@ describe('_f test suite', () => {
 		assert.equal(memoized(3, 4), 7)
 		assert.equal(memoized(3, 4), 7)
 	})
+	it('should sanitize a string or object', () => {
+		// tslint:disable-next-line: quotemark
+		const { ESanitize } = require('../sanitize')
+		assert.deepEqual(
+			_f.sanitize(
+				{ username: 'johndoe', password: { $gt: '' } },
+				ESanitize.NOSQL,
+			),
+			{ username: 'johndoe', password: {} },
+		)
+		assert.equal(
+			_f.sanitize("name' OR 1==1", ESanitize.SQL),
+			"name\\' OR 1==1",
+		)
+		assert.equal(
+			_f.sanitize("name' \tOR 1==1", ESanitize.SQL),
+			"name\\' \\tOR 1==1",
+		)
+		assert.equal(
+			_f.sanitize('<b>This is a test</b>', ESanitize.HTML),
+			'&lt;b&gt;This is a test&lt;/b&gt;',
+		)
+	})
 	it('should calculate the distances between strings correctly', () => {
 		assert.equal(_f.levenshtein('test', 'test'), 0)
 		assert.equal(_f.levenshtein('', 'test'), 4)

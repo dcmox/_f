@@ -48,6 +48,7 @@ import { rightJoin } from './rightJoin'
 import { rightRotate } from './rightRotate'
 import { rightShift } from './rightShift'
 import { round } from './round'
+import { ESanitize, sanitize } from './sanitize'
 import { secureRandomNumber } from './secureRandomNumber'
 import { shuffle } from './shuffle'
 import { splitByLength } from './splitByLength'
@@ -115,6 +116,8 @@ module.exports = {
 	rightRotate,
 	rightShift,
 	round,
+	ESanitize,
+	sanitize,
 	secureRandomNumber,
 	shuffle,
 	splitByLength,
