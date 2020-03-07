@@ -50,6 +50,7 @@ var rightJoin_1 = require("./rightJoin");
 var rightRotate_1 = require("./rightRotate");
 var rightShift_1 = require("./rightShift");
 var round_1 = require("./round");
+var safeEval_1 = require("./safeEval");
 var sanitize_1 = require("./sanitize");
 var secureRandomNumber_1 = require("./secureRandomNumber");
 var shuffle_1 = require("./shuffle");
@@ -119,6 +120,8 @@ module.exports = {
     rightShift: rightShift_1.rightShift,
     round: round_1.round,
     ESanitize: sanitize_1.ESanitize,
+    safeEval: safeEval_1.safeEval,
+    simpleEval: safeEval_1.simpleEval,
     sanitize: sanitize_1.sanitize,
     secureRandomNumber: secureRandomNumber_1.secureRandomNumber,
     shuffle: shuffle_1.shuffle,

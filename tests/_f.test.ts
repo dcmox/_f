@@ -556,6 +556,20 @@ describe('_f test suite', () => {
 		assert.throws(() => _f.check('555', Number))
 		assert.throws(() => _f.check({}, Array))
 	})
+	it('should safely evaluate an expression or code logic', async () => {
+		// NodeJS eval
+		const nodeResult = await _f.safeEval('a = 5 + 5', { a: 0 })
+		assert.deepEqual(nodeResult, { a: 10 })
+		const byValueTest = { a: 0 }
+		await _f.safeEval('a = 5 + 5', byValueTest)
+		assert.notDeepEqual(byValueTest, { a: 10 })
+		// Browser eval
+		const result = await _f.safeEval('a = 5 + 5', { a: 0, useNode: false })
+		assert.deepEqual(result, { a: 10 })
+		// Simple eval
+		const simpleResult = _f.simpleEval('5 * 5 + 5')
+		assert.deepEqual(simpleResult, 30)
+	})
 	it('should calculate the distances between strings correctly', () => {
 		assert.equal(_f.levenshtein('test', 'test'), 0)
 		assert.equal(_f.levenshtein('', 'test'), 4)
