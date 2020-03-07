@@ -4,6 +4,7 @@ exports.__esModule = true;
 var base64_1 = require("./base64");
 var binary_1 = require("./binary");
 var camelCase_1 = require("./camelCase");
+var check_1 = require("./check");
 var compact_1 = require("./compact");
 var decodeHTML_1 = require("./decodeHTML");
 var deepClone_1 = require("./deepClone");
@@ -68,6 +69,7 @@ module.exports = {
     add: math_1.add,
     br2nl: nl2br_1.br2nl,
     camelCase: camelCase_1.camelCase,
+    check: check_1.check,
     compact: compact_1.compact,
     decodeHTML: decodeHTML_1.decodeHTML,
     deepClone: deepClone_1.deepClone,

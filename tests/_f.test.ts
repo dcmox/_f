@@ -534,6 +534,28 @@ describe('_f test suite', () => {
 			'&lt;b&gt;This is a test&lt;/b&gt;',
 		)
 	})
+	it('should check that a variable matches a type', () => {
+		assert.equal(_f.check('test', String, false), true)
+		assert.equal(_f.check(false, Boolean, false), true)
+		assert.equal(_f.check('false', Boolean, false), false)
+		assert.equal(_f.check(0, 'boolean', false), false)
+		assert.equal(_f.check(0, 'number', false), true)
+		assert.equal(_f.check(0, null, false), false)
+		assert.equal(_f.check(null, null, false), true)
+		const arr: any = []
+		assert.equal(_f.check(arr[2], undefined, false), true)
+		assert.equal(_f.check(arr, undefined, false), false)
+		// tslint:disable-next-line: max-classes-per-file
+		class Test {}
+		const test = new Test()
+		assert.equal(_f.check(test, Test, false), true)
+		assert.equal(_f.check({}, Object, false), true)
+		assert.equal(_f.check([], Array, false), true)
+		assert.throws(() => _f.check(1, Boolean))
+		assert.throws(() => _f.check(555, String))
+		assert.throws(() => _f.check('555', Number))
+		assert.throws(() => _f.check({}, Array))
+	})
 	it('should calculate the distances between strings correctly', () => {
 		assert.equal(_f.levenshtein('test', 'test'), 0)
 		assert.equal(_f.levenshtein('', 'test'), 4)

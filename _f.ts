@@ -3,6 +3,7 @@
 import { fromBase64, toBase64 } from './base64'
 import { fromBinary, toBinary } from './binary'
 import { camelCase } from './camelCase'
+import { check } from './check'
 import { compact } from './compact'
 import { decodeHTML } from './decodeHTML'
 import { deepClone } from './deepClone'
@@ -68,6 +69,7 @@ module.exports = {
 	add,
 	br2nl,
 	camelCase,
+	check,
 	compact,
 	decodeHTML,
 	deepClone,

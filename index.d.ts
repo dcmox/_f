@@ -3,6 +3,20 @@
 // Definitions by: Daniel Moxon https://www.underscore-functions.com
 declare module 'underscore-functions' {
 	declare type TStringifyCacheResult = ((o: any) => string) | string
+	declare enum ESanitize {
+		MONGO = 1,
+		SQL = 2,
+		HTML = 3,
+	}
+	declare function check(
+		value: any,
+		type: any,
+		throwErr: boolean = true,
+	): boolean
+	declare function sanitize(
+		stringOrObject: any,
+		mode: ESanitize = ESanitize.MONGO,
+	): any
 	declare function intToRoman(num: number): number
 	declare function toBase64(s: string): string
 	declare function fromBase64(s: string): string

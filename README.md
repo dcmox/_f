@@ -64,7 +64,6 @@ const _f = require('underscore-functions')
 -   deepFreeze = (a: any) => Make an object and all nested objects immutable
 -   leftJoin = (a: any, b: any[], criteria?: () => boolean) => Left join an array of JSON documents onto a source
 -   rightJoin = (a: any, b: any[], criteria?: () => boolean) => Right join an array of JSON documents onto a source
--   sanitize = (stringOrObject: any, mode: ESanitize = ESanitize.MONGO) => Returns a sanitized string or object based on mode, (MONGO = 1, SQL = 2, HTML = 3). MONGO removes queries from JSON objects (eg: keys that start with \$). SQL escapes (adds backslashes to) unsafe characters. HTML converts special characters into printable entities, (eg: '<' becomes '&amp;lt;').
 
 ## Array Functions
 
@@ -98,7 +97,9 @@ const _f = require('underscore-functions')
 
 ## Misc Functions
 
+-   check = (value: any, type: any, throwErr: boolean = true) => Returns true if the value's type matches the type passed. Otherwise throws an error or returns false depending on the optional 3rd parameter.
 -   memoize = (n: number)(fn: (...args: any) => any) => Caches n results of the callback function passed into it. eg: \_f.memoize(5)(callbackFn) will store the most recently used results based on the included arguments. Highly efficient for recursive algorithms where you don't want to recalculate explored states/paths. Argument checks are done by value (not by reference). This algorithm performs better than [memoizerific](https://github.com/thinkloop/memoizerific) by a factor of 10 in some cases (for example, when reaching the cache limit)
+-   sanitize = (stringOrObject: any, mode: ESanitize = ESanitize.MONGO) => Returns a sanitized string or object based on mode, (MONGO = 1, SQL = 2, HTML = 3). MONGO removes queries from JSON objects (eg: keys that start with \$). SQL escapes (adds backslashes to) unsafe characters. HTML converts special characters into printable entities, (eg: '<' becomes '&amp;lt;').
 
 ## Usage
 
