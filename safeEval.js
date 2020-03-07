@@ -52,7 +52,11 @@ exports.safeEval = function (s, context, timeout) {
                     fork = require('child_process').fork;
                     tmp = require('os').tmpdir();
                     fs = require('fs');
-                    container = tmp + 'tmpFile-' + +new Date() + '-' + Math.random() * 10000 + 1000;
+                    container = tmp +
+                        'tmpFile-' +
+                        +new Date() +
+                        '-' +
+                        (Math.random() * 10000 + 1000);
                     script = "\n            var s = `" + s + "`\n            var context = " + JSON.stringify(context) + "\n            const sandbox = require('vm')\n            sandbox.createContext(context)\n            sandbox.runInContext(s, context)\n            if (process.send) {\n                process.send(context)\n            }\n        ";
                     // Write our script to the container
                     fs.writeFileSync(container, script);

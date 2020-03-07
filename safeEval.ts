@@ -15,7 +15,11 @@ export const safeEval = async (
 		const fs = require('fs')
 		// Create a container
 		const container =
-			tmp + 'tmpFile-' + +new Date() + '-' + Math.random() * 10000 + 1000
+			tmp +
+			'tmpFile-' +
+			+new Date() +
+			'-' +
+			(Math.random() * 10000 + 1000)
 		// Build our sandboxed script
 		const script = `
             var s = \`${s}\`
