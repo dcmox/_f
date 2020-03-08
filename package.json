@@ -1,6 +1,6 @@
 {
 	"name": "underscore-functions",
-	"version": "0.8.7",
+	"version": "0.8.8",
 	"private": false,
 	"description": "Useful string, array, number, and object functions library",
 	"main": "_f.js",
@@ -22,7 +22,7 @@
 		"build": "npm run build:main",
 		"build:main": "tsc _f.ts",
 		"watch": "tsc -w _f.ts",
-		"testb": "node safeEval.js"
+		"testb": "node _f.js"
 	},
 	"repository": {
 		"type": "git",
