@@ -83,6 +83,7 @@ export const safeEval = async (
 		// Finally, store our result into container window
 		script += 'window["evalResult"] = eval(`' + s + '`) || null'
 		container.src = 'javascript:' + script
+		container.setAttribute('sandbox', 'allow-scripts')
 		document.body.append(container)
 		// Wait for our time to elapse or a result
 		let time = 0

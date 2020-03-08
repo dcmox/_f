@@ -109,6 +109,7 @@ exports.safeEval = function (s, context, timeout) {
                     // Finally, store our result into container window
                     script += 'window["evalResult"] = eval(`' + s + '`) || null';
                     container.src = 'javascript:' + script;
+                    container.setAttribute('sandbox', 'allow-scripts');
                     document.body.append(container);
                     time_1 = 0;
                     _g.label = 3;
