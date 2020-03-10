@@ -58,6 +58,7 @@ const _f = require('underscore-functions')
 -   isJson = (s: string) => Returns true if string is valid JSON
 -   stringifyCache = (o: any, \_returnTemplate: boolean = false): TStringifyCacheResult => Caches the object schema and returns a stringify function that is twice as fast as native JSON.stringify (on average)
 -   stringifyT = (o: any, tpl: string = '') => Returns a string representation of an object. This is the same function that is returned by stringifyCache. Use in combination with the \_returnTemplate parameter of stringifyCache to cache known object schemas and stringify them later.
+-   stripTags = (s: string) => Returns a string with &lt;tags&gt; (presumably HTML) omitted.
 
 ## Object Functions
 

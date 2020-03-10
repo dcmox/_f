@@ -450,6 +450,13 @@ describe('_f test suite', () => {
 			assert.deepEqual(_f.justifyText(test.s), test.expected)
 		})
 	})
+	it('should justify strip tags', () => {
+		assert.deepEqual(_f.stripTags('<b>test</b>'), 'test')
+		assert.deepEqual(
+			_f.stripTags('<div><button>hello world</button></div>'),
+			'hello world',
+		)
+	})
 	it('should detect if a string is JSON', () => {
 		const tests: any = [
 			{

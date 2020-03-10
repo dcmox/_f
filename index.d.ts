@@ -79,6 +79,7 @@ declare module 'underscore-functions' {
 	declare function levenshtein(s: string, s2: string): number
 	declare function justifyText(text: string, len: number = 20): string
 	declare function isJson(s: string): boolean
+	declare function stripTags(s: string): string
 	declare function stringifyCache(
 		o: any,
 		_returnTemplate: boolean = false,

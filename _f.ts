@@ -55,6 +55,7 @@ import { secureRandomNumber } from './secureRandomNumber'
 import { shuffle } from './shuffle'
 import { splitByLength } from './splitByLength'
 import { stringifyCache, stringifyT } from './stringify'
+import { stripTags } from './stripTags'
 import { toAlpha } from './toAlpha'
 import { toNumeric } from './toNumeric'
 import { toPath } from './toPath'
@@ -128,6 +129,7 @@ module.exports = {
 	splitByLength,
 	stringifyCache,
 	stringifyT,
+	stripTags,
 	subtract,
 	toAlpha,
 	toBase64,
